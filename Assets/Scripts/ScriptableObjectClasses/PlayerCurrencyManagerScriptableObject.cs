@@ -32,15 +32,15 @@ public class PlayerCurrencyManagerScriptableObject : ScriptableObject
     }
 
     /// <summary>
-    /// Pass in how much you would like to deduct, it will try to deduct it and return true if it succeeds 
+    /// Pass in how much you would like to spend, it will try to spend that amount and return true if there is sufficient funds (succeeded)
     /// </summary>
-    /// <param name="amountToDeduct"></param>
+    /// <param name="amountToSpend"></param>
     /// <returns></returns>
-    public bool DeductTier1Currency(ulong amountToDeduct)
+    public bool SpendTier1Currency(ulong amountToSpend)
     {
-        if(IsThisAfforable_Tier1(amountToDeduct))
+        if(IsThisAfforable_Tier1(amountToSpend))
         {
-            _currencyTier1.Value -= amountToDeduct;
+            _currencyTier1.Value -= amountToSpend;
 
             return true;
         }

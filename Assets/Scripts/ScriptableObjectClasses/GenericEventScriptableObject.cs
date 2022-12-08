@@ -6,7 +6,7 @@ public class GenericEventScriptableObject : DescriptionBaseSO
 {
     public UnityAction OnEventRaised;
 
-    public void RaiseEvent()
+    public void SendEvent()
     {
         if (OnEventRaised != null)
             OnEventRaised.Invoke();

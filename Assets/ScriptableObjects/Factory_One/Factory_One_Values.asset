@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e794a5d3c8ade5743ac4600db01ee1d2, type: 3}
-  m_Name: Factory_One
+  m_Name: Factory_One_Values
   m_EditorClassIdentifier: 
   description: This is the first factory and should be the cheapest to upgrade
-  _level: 1
-  _payoutAmount: 100
-  _upgradeCost: 1000
+  _factoryName: Factory One
   _timeBetweenPayouts: 5
   _basePayoutAmount: 100
   _payoutMultiplier: 1.1
   _baseUpgradeCost: 1000
   _baseUpgradeMultiplier: 1.1
+  _level: 1
+  _payoutAmount: 100
+  _upgradeCost: 1000
+  _payoutTimeRemaining: 0

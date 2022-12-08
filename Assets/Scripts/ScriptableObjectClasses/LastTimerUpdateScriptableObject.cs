@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "LastTimerUpdate", menuName = "ScriptableObjects/LastTimerUpdate")]
-public class LastTimerUpdateScriptableObject : ScriptableObject
+public class LastTimerUpdateScriptableObject : DescriptionBaseSO
 {
     public DateTime LastUpdate { get; private set; }
 

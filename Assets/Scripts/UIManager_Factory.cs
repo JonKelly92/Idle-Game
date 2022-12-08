@@ -2,36 +2,65 @@ using UnityEngine;
 
 public class UIManager_Factory : MonoBehaviour
 {
-    /*
-      
-        - on startup get the current values from _factoryValuesSO and update the UI
-            - PayoutTimeRemaing, Level, Payout Amount, UpgradeCost
-    
-        - use _factoryValuesSO event to check for the PayoutTimeRemaing updates
-
-        - use _factoryValuesSO event to update the Level
-
-        - use _factoryValuesSO event to update the payout amount
-    
-        - use _factoryValuesSO event UpgradeCost update 
-            - compare against _playerCurrenyManagerSO to see if it's afforable and lock/unlock upgrade button accordingly
-
-        - when upgrade button is unlocked and pressed then trigger event in _factoryValuesSO
-            - this will notify the factory that an upgrade should be purchased
-
-     */
-
+    [SerializeField] private GenericEventScriptableObject _purchaseUpgradeEvent;
     [SerializeField] private FactoryValuesScriptableObject _factoryValuesSO;
-    [SerializeField] private PlayerCurrencyManagerScriptableObject _playerCurrenyManagerSO;
 
+
+    private void Awake()
+    {
+        _factoryValuesSO.OnPayoutTimeRemainingChanged.AddListener(PayoutTimeRemainingChanged);
+        _factoryValuesSO.OnLevelChanged.AddListener(LevelChanged);
+        _factoryValuesSO.OnPayoutAmountChanged.AddListener(PayoutAmountChanged);
+        _factoryValuesSO.OnUpgradeCostChanged.AddListener(UpgradeCostChanged);
+        _factoryValuesSO.OnIsUpgradeAffordableChanged.AddListener(IsUpgradeAffordable);
+    }
 
     private void Start()
     {
-        
+        // Init UI so it reflects the actual values
+        PayoutTimeRemainingChanged(_factoryValuesSO.PayoutTimeRemaining);
+        LevelChanged(_factoryValuesSO.Level);
+        PayoutAmountChanged(_factoryValuesSO.PayoutAmount);
+        UpgradeCostChanged(_factoryValuesSO.UpgradeCost);
     }
 
     private void OnDestroy()
     {
-        
+        _factoryValuesSO.OnPayoutTimeRemainingChanged.RemoveListener(PayoutTimeRemainingChanged);
+        _factoryValuesSO.OnLevelChanged.RemoveListener(LevelChanged);
+        _factoryValuesSO.OnPayoutAmountChanged.RemoveListener(PayoutAmountChanged);
+        _factoryValuesSO.OnUpgradeCostChanged.RemoveListener(UpgradeCostChanged);
+        _factoryValuesSO.OnIsUpgradeAffordableChanged.RemoveListener(IsUpgradeAffordable);
+    }
+
+    private void PayoutTimeRemainingChanged(float timeRemaining)
+    {
+        // TODO : update UI
+    }
+
+    private void LevelChanged(int level)
+    {
+        // TODO : update UI
+    }
+
+    private void PayoutAmountChanged(ulong payoutAmount)
+    {
+        // TODO : update UI
+    }
+
+    private void UpgradeCostChanged(ulong upgradeCost)
+    {
+        // TODO : update UI  
+    }
+
+    private void IsUpgradeAffordable(bool isItAffordable)
+    {
+        // TOOD : update UI
+    }
+
+
+    private void PurchaseUpgrade()
+    {
+        _purchaseUpgradeEvent.SendEvent();
     }
 }

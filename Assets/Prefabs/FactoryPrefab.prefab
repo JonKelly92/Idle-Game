@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e8eebcc0b847874f902b7aa30902229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _purchaseUpgradeEvent: {fileID: 11400000, guid: a24a93d10d274f04d975b0827d8ce0e4, type: 2}
   _factoryValuesSO: {fileID: 11400000, guid: 455a75caded257844af6fd7fac842895, type: 2}
   _playerCurrenyManagerSO: {fileID: 11400000, guid: 39b44479021fcdb4d8a3d5ad816ef365, type: 2}
   _timerTickEvent: {fileID: 11400000, guid: 80be08be90afe0e40b7a0ea13e2ee9ae, type: 2}
@@ -60,8 +61,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a68faf921940314db9f51549ab44618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _purchaseUpgradeEvent: {fileID: 11400000, guid: a24a93d10d274f04d975b0827d8ce0e4, type: 2}
   _factoryValuesSO: {fileID: 11400000, guid: 455a75caded257844af6fd7fac842895, type: 2}
-  _playerCurrenyManagerSO: {fileID: 11400000, guid: 39b44479021fcdb4d8a3d5ad816ef365, type: 2}
 --- !u!1 &8309688673880769729
 GameObject:
   m_ObjectHideFlags: 0

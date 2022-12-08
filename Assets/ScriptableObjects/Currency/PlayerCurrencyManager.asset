@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fd953eed96157748b288c5851f2c78a, type: 3}
-  m_Name: LastTimerUpdate
+  m_Script: {fileID: 11500000, guid: f92f8169194a25140a35d73113f92ab0, type: 3}
+  m_Name: PlayerCurrencyManager
   m_EditorClassIdentifier: 
+  _currencyTier1: {fileID: 11400000, guid: 68a13b4036408d4449c6777bd35909e1, type: 2}
