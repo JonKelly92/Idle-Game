@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(fileName = "FloatVariable", menuName = "ScriptableObjects/FloatVariable")]
-public class FloatVariable : ScriptableObject
+[CreateAssetMenu(menuName = "ScriptableObjects/FloatVariable")]
+public class FloatVariable : DescriptionBaseSO
 {
     public UnityEvent<float> OnValueChanged { get; private set; } = new UnityEvent<float>();
 
@@ -10,7 +10,7 @@ public class FloatVariable : ScriptableObject
 
     public float Value
     {
-        get { return _value; }
+        get => _value;
         set 
         {
             _value = value;

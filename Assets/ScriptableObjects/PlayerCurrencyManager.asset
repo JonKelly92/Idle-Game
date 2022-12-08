@@ -12,4 +12,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f92f8169194a25140a35d73113f92ab0, type: 3}
   m_Name: PlayerCurrencyManager
   m_EditorClassIdentifier: 
-  timer: {fileID: 0}
