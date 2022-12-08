@@ -19,68 +19,18 @@ public class FactoryValuesScriptableObject : DescriptionBaseSO
     public float BaseUpgradeMultiplier => _baseUpgradeMultiplier;
 
 
-    public UnityEvent<int> OnLevelChanged { get; private set; } = new UnityEvent<int>();
+    // The below variables send an event when their value is changed (the above variables don't need this because they shouldn't be changed at runtime)
 
-    [SerializeField] private int _level;
-    public int Level
-    {
-        get => _level;
-        set
-        {
-            _level = value;
-            OnLevelChanged?.Invoke(_level);
-        }
-    }
+    [SerializeField] private IntVariable _level;
+    [SerializeField] private uLongVariable _payoutAmount;
+    [SerializeField] private uLongVariable _upgradeCost;
+    [SerializeField] private FloatVariable _payoutTimeRemaining;
+    [SerializeField] private BoolVariable _isUpgradeAffordable;
 
-    public UnityEvent<ulong> OnPayoutAmountChanged { get; private set; } = new UnityEvent<ulong>();
+    public IntVariable LevelSO => _level;
+    public uLongVariable PayoutAmountSO => _payoutAmount;
+    public uLongVariable UpgradeCostSO => _upgradeCost;
+    public FloatVariable PayoutTimeRemainingSO => _payoutTimeRemaining;
+    public BoolVariable IsUpgradeAffordableSO => _isUpgradeAffordable;
 
-    [SerializeField] private ulong _payoutAmount;
-    public ulong PayoutAmount
-    {
-        get => _payoutAmount;
-        set
-        {
-            _payoutAmount = value;
-            OnPayoutAmountChanged?.Invoke(_payoutAmount);
-        }
-    }
-
-    public UnityEvent<ulong> OnUpgradeCostChanged { get; private set; } = new UnityEvent<ulong>();
-
-    [SerializeField] private ulong _upgradeCost;
-    public ulong UpgradeCost
-    {
-        get => _upgradeCost;
-        set
-        {
-            _upgradeCost = value;
-            OnUpgradeCostChanged?.Invoke(_upgradeCost);
-        }
-    }
-
-    public UnityEvent<float> OnPayoutTimeRemainingChanged { get; private set; } = new UnityEvent<float>();
-
-    [SerializeField] private float _payoutTimeRemaining;
-    public float PayoutTimeRemaining
-    {
-        get => _payoutTimeRemaining;
-        set
-        {
-            _payoutTimeRemaining = value;
-            OnPayoutTimeRemainingChanged?.Invoke(_payoutTimeRemaining);
-        }
-    }
-
-    public UnityEvent<bool> OnIsUpgradeAffordableChanged { get; private set; } = new UnityEvent<bool>();
-
-    private bool _isUpgradeAffordable;
-    public bool IsUpgradeAffordable
-    {
-        get => _isUpgradeAffordable;
-        set
-        {
-            _isUpgradeAffordable = value;
-            OnIsUpgradeAffordableChanged?.Invoke(_isUpgradeAffordable);
-        }
-    }
 }

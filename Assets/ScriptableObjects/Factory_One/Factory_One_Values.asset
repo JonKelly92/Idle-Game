@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e794a5d3c8ade5743ac4600db01ee1d2, type: 3}
   m_Name: Factory_One_Values
   m_EditorClassIdentifier: 
-  description: This is the first factory and should be the cheapest to upgrade
+  description: This contains all the values for the first factory the player has
+    access to. It should be the cheapest factory to upgrade.
   _factoryName: Factory One
   _timeBetweenPayouts: 5
   _basePayoutAmount: 100
   _payoutMultiplier: 1.1
   _baseUpgradeCost: 1000
   _baseUpgradeMultiplier: 1.1
-  _level: 1
-  _payoutAmount: 100
-  _upgradeCost: 1000
-  _payoutTimeRemaining: 0
+  _level: {fileID: 11400000, guid: 781194883232a7249962c04a9e02a4c5, type: 2}
+  _payoutAmount: {fileID: 11400000, guid: fac4358b528f70e4b852670f64a7a4cd, type: 2}
+  _upgradeCost: {fileID: 11400000, guid: 18a48e1d0bd92e045a4b4e7df2c352ec, type: 2}
+  _payoutTimeRemaining: {fileID: 11400000, guid: ff44c2e6efe6e0947a60829abaea412a, type: 2}
+  _isUpgradeAffordable: {fileID: 11400000, guid: 603bffa4e2769a34bb8fe910a4d69987, type: 2}

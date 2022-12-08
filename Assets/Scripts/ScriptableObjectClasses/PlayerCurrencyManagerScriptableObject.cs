@@ -14,7 +14,6 @@ public class PlayerCurrencyManagerScriptableObject : ScriptableObject
      */
 
     [SerializeField] private uLongVariable _currencyTier1;
-
     public uLongVariable CurrencyTier1 => _currencyTier1;
 
 

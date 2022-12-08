@@ -8,29 +8,29 @@ public class UIManager_Factory : MonoBehaviour
 
     private void Awake()
     {
-        _factoryValuesSO.OnPayoutTimeRemainingChanged.AddListener(PayoutTimeRemainingChanged);
-        _factoryValuesSO.OnLevelChanged.AddListener(LevelChanged);
-        _factoryValuesSO.OnPayoutAmountChanged.AddListener(PayoutAmountChanged);
-        _factoryValuesSO.OnUpgradeCostChanged.AddListener(UpgradeCostChanged);
-        _factoryValuesSO.OnIsUpgradeAffordableChanged.AddListener(IsUpgradeAffordable);
+        _factoryValuesSO.PayoutTimeRemainingSO.OnValueChanged.AddListener(PayoutTimeRemainingChanged);
+        _factoryValuesSO.LevelSO.OnValueChanged.AddListener(LevelChanged);
+        _factoryValuesSO.PayoutAmountSO.OnValueChanged.AddListener(PayoutAmountChanged);
+        _factoryValuesSO.UpgradeCostSO.OnValueChanged.AddListener(UpgradeCostChanged);
+        _factoryValuesSO.IsUpgradeAffordableSO.OnValueChanged.AddListener(IsUpgradeAffordable);
     }
 
     private void Start()
     {
         // Init UI so it reflects the actual values
-        PayoutTimeRemainingChanged(_factoryValuesSO.PayoutTimeRemaining);
-        LevelChanged(_factoryValuesSO.Level);
-        PayoutAmountChanged(_factoryValuesSO.PayoutAmount);
-        UpgradeCostChanged(_factoryValuesSO.UpgradeCost);
+        PayoutTimeRemainingChanged(_factoryValuesSO.PayoutTimeRemainingSO.Value);
+        LevelChanged(_factoryValuesSO.LevelSO.Value);
+        PayoutAmountChanged(_factoryValuesSO.PayoutAmountSO.Value);
+        UpgradeCostChanged(_factoryValuesSO.UpgradeCostSO.Value);
     }
 
     private void OnDestroy()
     {
-        _factoryValuesSO.OnPayoutTimeRemainingChanged.RemoveListener(PayoutTimeRemainingChanged);
-        _factoryValuesSO.OnLevelChanged.RemoveListener(LevelChanged);
-        _factoryValuesSO.OnPayoutAmountChanged.RemoveListener(PayoutAmountChanged);
-        _factoryValuesSO.OnUpgradeCostChanged.RemoveListener(UpgradeCostChanged);
-        _factoryValuesSO.OnIsUpgradeAffordableChanged.RemoveListener(IsUpgradeAffordable);
+        _factoryValuesSO.PayoutTimeRemainingSO.OnValueChanged.RemoveListener(PayoutTimeRemainingChanged);
+        _factoryValuesSO.LevelSO.OnValueChanged.RemoveListener(LevelChanged);
+        _factoryValuesSO.PayoutAmountSO.OnValueChanged.RemoveListener(PayoutAmountChanged);
+        _factoryValuesSO.UpgradeCostSO.OnValueChanged.RemoveListener(UpgradeCostChanged);
+        _factoryValuesSO.IsUpgradeAffordableSO.OnValueChanged.RemoveListener(IsUpgradeAffordable);
     }
 
     private void PayoutTimeRemainingChanged(float timeRemaining)

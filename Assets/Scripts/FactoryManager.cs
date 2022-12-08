@@ -27,7 +27,16 @@ public class FactoryManager : MonoBehaviour
 
     private void Start()
     {
-        // Initialize this value and the UI
+        // Initialize values in case they have never been used before
+        if (_factoryValuesSO.LevelSO.Value == 0)
+            _factoryValuesSO.LevelSO.Value = 1;
+
+        if (_factoryValuesSO.PayoutAmountSO.Value < _factoryValuesSO.BasePayoutAmount)
+            _factoryValuesSO.PayoutAmountSO.Value = (ulong)_factoryValuesSO.BasePayoutAmount;
+
+        if (_factoryValuesSO.UpgradeCostSO.Value < _factoryValuesSO.BaseUpgradeCost)
+            _factoryValuesSO.UpgradeCostSO.Value = (ulong)_factoryValuesSO.BaseUpgradeCost;
+
         CurrencyTier1Changed(_playerCurrenyManagerSO.CurrencyTier1.Value);
     }
 
@@ -40,7 +49,7 @@ public class FactoryManager : MonoBehaviour
 
     private void PurchaseUpgrade()
     {
-        if(_playerCurrenyManagerSO.SpendTier1Currency(_factoryValuesSO.UpgradeCost))
+        if(_playerCurrenyManagerSO.SpendTier1Currency(_factoryValuesSO.UpgradeCostSO.Value))
         {
             // Upgrade was successfully purchased
             IncreaseLevel();
@@ -53,18 +62,18 @@ public class FactoryManager : MonoBehaviour
     // Which in turn sends an event to update the UI
     private void CurrencyTier1Changed(ulong tier1Amount)
     {
-        bool isUpgradeAffordableCheck = _playerCurrenyManagerSO.IsThisAfforable_Tier1(_factoryValuesSO.UpgradeCost);
-        _factoryValuesSO.IsUpgradeAffordable = isUpgradeAffordableCheck;
+        bool isUpgradeAffordableCheck = _playerCurrenyManagerSO.IsThisAfforable_Tier1(_factoryValuesSO.UpgradeCostSO.Value);
+        _factoryValuesSO.IsUpgradeAffordableSO.Value = isUpgradeAffordableCheck;
     }
 
-    private void IncreaseLevel() => SetLevel(_factoryValuesSO.Level++);
+    private void IncreaseLevel() => SetLevel(_factoryValuesSO.LevelSO.Value++);
 
     private void SetLevel(int newLevel)
     {
-        _factoryValuesSO.Level = newLevel;
+        _factoryValuesSO.LevelSO.Value = newLevel;
 
-        _factoryValuesSO.PayoutAmount = (ulong)_factoryValuesSO.PayoutMultiplier * _factoryValuesSO.PayoutAmount;
+        _factoryValuesSO.PayoutAmountSO.Value = (ulong)_factoryValuesSO.PayoutMultiplier * _factoryValuesSO.PayoutAmountSO.Value;
 
-        _factoryValuesSO.UpgradeCost = (ulong)_factoryValuesSO.BaseUpgradeMultiplier * _factoryValuesSO.UpgradeCost;
+        _factoryValuesSO.UpgradeCostSO.Value = (ulong)_factoryValuesSO.BaseUpgradeMultiplier * _factoryValuesSO.UpgradeCostSO.Value;
     }
 }
