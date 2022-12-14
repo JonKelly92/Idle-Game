@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: This contains all the values for the first factory the player has
     access to. It should be the cheapest factory to upgrade.
-  _factoryName: Factory One
-  _timeBetweenPayouts: 5
-  _basePayoutAmount: 100
-  _payoutMultiplier: 1.1
-  _baseUpgradeCost: 1000
-  _baseUpgradeMultiplier: 1.1
-  _level: {fileID: 11400000, guid: 781194883232a7249962c04a9e02a4c5, type: 2}
-  _payoutAmount: {fileID: 11400000, guid: fac4358b528f70e4b852670f64a7a4cd, type: 2}
-  _upgradeCost: {fileID: 11400000, guid: 18a48e1d0bd92e045a4b4e7df2c352ec, type: 2}
-  _payoutTimeRemaining: {fileID: 11400000, guid: ff44c2e6efe6e0947a60829abaea412a, type: 2}
-  _isUpgradeAffordable: {fileID: 11400000, guid: 603bffa4e2769a34bb8fe910a4d69987, type: 2}
+  <FactoryName>k__BackingField: Factory One
+  <TimeBetweenPayouts>k__BackingField: 5
+  <BasePayoutAmount>k__BackingField: 100
+  <PayoutMultiplier>k__BackingField: 1.1
+  <BaseUpgradeCost>k__BackingField: 1000
+  <BaseUpgradeMultiplier>k__BackingField: 1.1
+  <LevelSO>k__BackingField: {fileID: 11400000, guid: 781194883232a7249962c04a9e02a4c5, type: 2}
+  <PayoutAmountSO>k__BackingField: {fileID: 11400000, guid: fac4358b528f70e4b852670f64a7a4cd, type: 2}
+  <UpgradeCostSO>k__BackingField: {fileID: 11400000, guid: 18a48e1d0bd92e045a4b4e7df2c352ec, type: 2}
+  <PayoutTimeRemainingSO>k__BackingField: {fileID: 11400000, guid: ff44c2e6efe6e0947a60829abaea412a, type: 2}
+  <IsUpgradeAffordableSO>k__BackingField: {fileID: 11400000, guid: 603bffa4e2769a34bb8fe910a4d69987, type: 2}

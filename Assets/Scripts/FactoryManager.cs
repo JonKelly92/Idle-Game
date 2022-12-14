@@ -58,7 +58,7 @@ public class FactoryManager : MonoBehaviour
             Debug.LogError("Failed to purchase upgrade for " + _factoryValuesSO.FactoryName);
     }
 
-    // The Tier 1 currency has changed so we check if the player can afford the next upgrade and then update the SO
+    // The Tier 1 currency has changed (increased or decreased) so we check if the player can afford the next upgrade and then update the SO
     // Which in turn sends an event to update the UI
     private void CurrencyTier1Changed(ulong tier1Amount)
     {
