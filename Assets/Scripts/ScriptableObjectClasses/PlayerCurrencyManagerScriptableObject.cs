@@ -13,7 +13,7 @@ public class PlayerCurrencyManagerScriptableObject : ScriptableObject
         
      */
 
-    [field: SerializeField] public uLongVariable CurrencyTier1 { get; private set; }
+    [field: SerializeField] public DoubleVariable CurrencyTier1 { get; private set; }
 
 
     /// <summary>
@@ -21,9 +21,9 @@ public class PlayerCurrencyManagerScriptableObject : ScriptableObject
     /// </summary>
     /// <param name="cost"></param>
     /// <returns></returns>
-    public bool IsThisAfforable_Tier1(ulong cost)
+    public bool IsThisAfforable_Tier1(double cost)
     {
-        if(cost >= CurrencyTier1.Value)
+        if(cost <= CurrencyTier1.Value)
             return true;
         else
             return false;
@@ -34,7 +34,7 @@ public class PlayerCurrencyManagerScriptableObject : ScriptableObject
     /// </summary>
     /// <param name="amountToSpend"></param>
     /// <returns></returns>
-    public bool SpendTier1Currency(ulong amountToSpend)
+    public bool SpendTier1Currency(double amountToSpend)
     {
         if(IsThisAfforable_Tier1(amountToSpend))
         {
@@ -50,7 +50,7 @@ public class PlayerCurrencyManagerScriptableObject : ScriptableObject
     /// Increases the amount of Currency Tier 1 that the play has
     /// </summary>
     /// <param name="amountGained"></param>
-    public void AddTier1Currency(ulong amountGained)
+    public void AddTier1Currency(double amountGained)
     {
         CurrencyTier1.Value += amountGained;
     }

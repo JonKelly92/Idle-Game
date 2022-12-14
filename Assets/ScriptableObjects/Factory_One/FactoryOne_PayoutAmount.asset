@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b92b5e56666d004b94318ac8937b54a, type: 3}
+  m_Script: {fileID: 11500000, guid: 2999533b68f3f4a4597da64295fc3628, type: 3}
   m_Name: FactoryOne_PayoutAmount
   m_EditorClassIdentifier: 
   description: 

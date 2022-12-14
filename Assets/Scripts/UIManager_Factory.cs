@@ -43,12 +43,12 @@ public class UIManager_Factory : MonoBehaviour
         // TODO : update UI
     }
 
-    private void PayoutAmountChanged(ulong payoutAmount)
+    private void PayoutAmountChanged(double payoutAmount)
     {
         // TODO : update UI
     }
 
-    private void UpgradeCostChanged(ulong upgradeCost)
+    private void UpgradeCostChanged(double upgradeCost)
     {
         // TODO : update UI  
     }

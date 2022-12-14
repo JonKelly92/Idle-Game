@@ -112,7 +112,7 @@ public class FactoryTester : MonoBehaviour
 
     private void AddCurrencyTier1()
     {
-        _playerCurrenyManagerSO.AddTier1Currency(100);
+        _playerCurrenyManagerSO.AddTier1Currency(_factoryValuesSO.PayoutAmountSO.Value);
     }
 
     private void PurchaseUpgrade()
@@ -125,7 +125,7 @@ public class FactoryTester : MonoBehaviour
         Debug.Log("PurchaseUpgradeEvent Fired");
     }
 
-    private void CurrencyTier1Changed(ulong tier1Amount)
+    private void CurrencyTier1Changed(double tier1Amount)
     {
         Debug.Log("CurrencyTier1Changed: " + tier1Amount.ToString());
     }
@@ -135,12 +135,12 @@ public class FactoryTester : MonoBehaviour
         Debug.Log("LevelChanged : " + level.ToString());
     }
 
-    private void PayoutAmountChanged(ulong payoutAmount)
+    private void PayoutAmountChanged(double payoutAmount)
     {
         Debug.Log("PayoutAmountChanged : " + payoutAmount.ToString());
     }
 
-    private void UpgradeCostChanged(ulong upgradeCost)
+    private void UpgradeCostChanged(double upgradeCost)
     {
         Debug.Log("UpgradeCostChanged : " + upgradeCost.ToString());
     }

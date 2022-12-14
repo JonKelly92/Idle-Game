@@ -14,8 +14,8 @@ public class FactoryValuesScriptableObject : DescriptionBaseSO
     // The below variables send an event when their value is changed (the above variables don't need this because they shouldn't be changed at runtime)
 
     [field: SerializeField] public IntVariable LevelSO { get; private set; }
-    [field: SerializeField] public uLongVariable PayoutAmountSO { get; private set; }
-    [field: SerializeField] public uLongVariable UpgradeCostSO { get; private set; }
+    [field: SerializeField] public DoubleVariable PayoutAmountSO { get; private set; }
+    [field: SerializeField] public DoubleVariable UpgradeCostSO { get; private set; }
     [field: SerializeField] public FloatVariable PayoutTimeRemainingSO { get; private set; }
     [field: SerializeField]  public BoolVariable IsUpgradeAffordableSO { get; private set; }
 
