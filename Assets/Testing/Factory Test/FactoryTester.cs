@@ -3,39 +3,6 @@ using UnityEngine.UI;
 
 public class FactoryTester : MonoBehaviour
 {
-    /*
-     
-    Buttons:
-        
-        - Print Line
-
-        - Print Factory Values
-
-        - Add currency (tier 1)
-
-        - Purchase upgrade event
-
-     
-    What to test:
-
-        - Make sure the values are correct at the start of the test
-
-        - Listen for when a purchase event is fired 
-            - _purchaseUpgradeEvent.OnEventRaised += PurchaseUpgrade;
-            - and then listen for the values to change
-               - _factoryValuesSO.LevelSO.OnValueChanged.AddListener(LevelChanged);
-               - _factoryValuesSO.PayoutAmountSO.OnValueChanged.AddListener(PayoutAmountChanged);
-               - _factoryValuesSO.UpgradeCostSO.OnValueChanged.AddListener(UpgradeCostChanged);
-
-        - Listen for when CurrencyTier1's value changes           
-            - _playerCurrenyManagerSO.CurrencyTier1.OnValueChanged.AddListener(CurrencyTier1Changed);
-            - and then listen for the value to change
-                - _factoryValuesSO.IsUpgradeAffordableSO.OnValueChanged.AddListener(IsUpgradeAffordable);      
-        
-        - Time remaining until the next payout
-
-     */
-
     [SerializeField] private Button _printLine;
     [SerializeField] private Button _printFactoryValues;
     [SerializeField] private Button _printCurrencyValues;

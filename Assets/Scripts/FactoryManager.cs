@@ -2,24 +2,15 @@ using UnityEngine;
 
 public class FactoryManager : MonoBehaviour
 {
-    /*
-      
-    
-    
-    - every timer tick determine how much time is left until the next pay out and update _factoryValuesSO
-         - going to need a SO with the amount of time since the last tick
-         - deduct that from the time remaing until pay out
-         - if the time that has passed is more than the remaining time until the payout then it spills over into the next payout timer
-
-
-     */
-
     [SerializeField] private GenericEventScriptableObject _purchaseUpgradeEvent;
     [SerializeField] private FactoryValuesScriptableObject _factoryValuesSO;
+    [SerializeField] private TimerTickEvent _timerTickEvent;
     [SerializeField] private PlayerCurrencyManagerScriptableObject _playerCurrenyManagerSO;
 
     private void Awake()
     {
+        _timerTickEvent.OnTimerTick.AddListener(OnTimerTick);
+
         _purchaseUpgradeEvent.OnEventRaised += PurchaseUpgrade;
 
         _playerCurrenyManagerSO.CurrencyTier1.OnValueChanged.AddListener(CurrencyTier1Changed);
@@ -32,19 +23,27 @@ public class FactoryManager : MonoBehaviour
             _factoryValuesSO.LevelSO.Value = 1;
 
         if (_factoryValuesSO.PayoutAmountSO.Value < _factoryValuesSO.BasePayoutAmount)
-            _factoryValuesSO.PayoutAmountSO.Value = (ulong)_factoryValuesSO.BasePayoutAmount;
+            _factoryValuesSO.PayoutAmountSO.Value = _factoryValuesSO.BasePayoutAmount;
 
         if (_factoryValuesSO.UpgradeCostSO.Value < _factoryValuesSO.BaseUpgradeCost)
-            _factoryValuesSO.UpgradeCostSO.Value = (ulong)_factoryValuesSO.BaseUpgradeCost;
+            _factoryValuesSO.UpgradeCostSO.Value = _factoryValuesSO.BaseUpgradeCost;
 
         CurrencyTier1Changed(_playerCurrenyManagerSO.CurrencyTier1.Value);
     }
 
     private void OnDestroy()
     {
+        _timerTickEvent.OnTimerTick.RemoveListener(OnTimerTick);
+
         _purchaseUpgradeEvent.OnEventRaised -= PurchaseUpgrade;
 
         _playerCurrenyManagerSO.CurrencyTier1.OnValueChanged.RemoveListener(CurrencyTier1Changed);
+    }
+
+    // time recieved is in milliseconds
+    private void OnTimerTick(double timeSinceLastTick) 
+    {
+
     }
 
     private void PurchaseUpgrade()

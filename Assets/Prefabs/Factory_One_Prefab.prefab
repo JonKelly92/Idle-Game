@@ -67,10 +67,6 @@ PrefabInstance:
       propertyPath: _purchaseUpgradeEvent
       value: 
       objectReference: {fileID: 11400000, guid: a24a93d10d274f04d975b0827d8ce0e4, type: 2}
-    - target: {fileID: 8243695583215723463, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
-      propertyPath: _playerCurrenyManagerSO
-      value: 
-      objectReference: {fileID: 11400000, guid: 39b44479021fcdb4d8a3d5ad816ef365, type: 2}
     - target: {fileID: 8309688673880769729, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
       propertyPath: m_Name
       value: Factory_One_Prefab

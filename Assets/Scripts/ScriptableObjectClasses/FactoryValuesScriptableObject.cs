@@ -11,8 +11,7 @@ public class FactoryValuesScriptableObject : DescriptionBaseSO
     [field: SerializeField] public float BaseUpgradeMultiplier { get; private set; }// a percentage to increase the cost by after each upgrade
 
 
-    // The below variables send an event when their value is changed (the above variables don't need this because they shouldn't be changed at runtime)
-
+    // The below variables send an event when their value is changed
     [field: SerializeField] public IntVariable LevelSO { get; private set; }
     [field: SerializeField] public DoubleVariable PayoutAmountSO { get; private set; }
     [field: SerializeField] public DoubleVariable UpgradeCostSO { get; private set; }

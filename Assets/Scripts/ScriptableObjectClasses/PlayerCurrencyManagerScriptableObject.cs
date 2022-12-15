@@ -9,7 +9,7 @@ public class PlayerCurrencyManagerScriptableObject : ScriptableObject
             - tier 2 currency - difficult to aquire
             - tier 3 currency - premium 
 
-        TODO: switch from using ulongs to a float and use a letter to indicate size
+        TODO: switch from using doubles to a float and use a letter to indicate size
         
      */
 
