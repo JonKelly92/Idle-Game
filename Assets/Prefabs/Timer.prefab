@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c925c93061edf4e4c84447ed2371202d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeBetweenTicks: 0.1
+  _timeBetweenTicks: 0.3
   _timerTickEvent: {fileID: 11400000, guid: 8e387ae76f1f6f8449cd5f86b82c3415, type: 2}
   _lastTimerUpdate: {fileID: 11400000, guid: c919c7f7677742c4da42d1d769bb5f0d, type: 2}

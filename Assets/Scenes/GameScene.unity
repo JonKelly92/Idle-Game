@@ -220,7 +220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8130503687706910560, guid: a2d9ec5d7aa07be4db9334b445166d62, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8130503687706910560, guid: a2d9ec5d7aa07be4db9334b445166d62, type: 3}
       propertyPath: m_LocalPosition.x
@@ -343,9 +343,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Timer
       objectReference: {fileID: 0}
+    - target: {fileID: 1614573482466209505, guid: 5e0490c02705e8e48b497fa44f3b3048, type: 3}
+      propertyPath: _timeBetweenTicks
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 1614573482466209506, guid: 5e0490c02705e8e48b497fa44f3b3048, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1614573482466209506, guid: 5e0490c02705e8e48b497fa44f3b3048, type: 3}
       propertyPath: m_LocalPosition.x
@@ -406,7 +410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1632845742845288068, guid: 8450099da73504042acaf2286f7a43d1, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1632845742845288068, guid: 8450099da73504042acaf2286f7a43d1, type: 3}
       propertyPath: m_AnchorMax.x

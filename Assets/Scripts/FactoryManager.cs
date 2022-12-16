@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class FactoryManager : MonoBehaviour
@@ -41,14 +42,36 @@ public class FactoryManager : MonoBehaviour
     }
 
     // time recieved is in milliseconds
-    private void OnTimerTick(double timeSinceLastTick) 
+    private void OnTimerTick(double timeSinceLastTick)
     {
+        if (timeSinceLastTick > _factoryValuesSO.PayoutTimeRemainingSO.Value)
+        {
+            int numberOfPayouts = 0;
 
+            // subtract the remaining time from this pay out period and add 1 payout
+            timeSinceLastTick -= _factoryValuesSO.PayoutTimeRemainingSO.Value; 
+            numberOfPayouts++;
+
+            // determine how many more pay out periods have passed and add that many payouts
+            numberOfPayouts += (int)Math.Truncate(timeSinceLastTick / _factoryValuesSO.TimeBetweenPayouts); 
+
+            // pay the player for each pay out
+            _playerCurrenyManagerSO.AddTier1Currency(numberOfPayouts * _factoryValuesSO.PayoutAmountSO.Value);
+
+            // this gives us the amount of time that has already passed since the start of this pay out period
+            double timePassThisPeriod = timeSinceLastTick % _factoryValuesSO.TimeBetweenPayouts;
+            _factoryValuesSO.PayoutTimeRemainingSO.Value = _factoryValuesSO.TimeBetweenPayouts - timePassThisPeriod;
+
+        }
+        else
+        {
+            _factoryValuesSO.PayoutTimeRemainingSO.Value -= timeSinceLastTick;
+        }
     }
 
     private void PurchaseUpgrade()
     {
-        if(_playerCurrenyManagerSO.SpendTier1Currency(_factoryValuesSO.UpgradeCostSO.Value))
+        if (_playerCurrenyManagerSO.SpendTier1Currency(_factoryValuesSO.UpgradeCostSO.Value))
         {
             // Upgrade was successfully purchased
             IncreaseLevel();

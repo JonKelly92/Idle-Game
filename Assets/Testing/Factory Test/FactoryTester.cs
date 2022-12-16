@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,10 +10,15 @@ public class FactoryTester : MonoBehaviour
     [SerializeField] private Button _addCurrency;
     [SerializeField] private Button _purchaseUpgrade;
 
+    [SerializeField] private Button _resetFactoryValues;
+    [SerializeField] private Button _resetCurrency;
+    [SerializeField] private Button _resetTimer;
+
 
     [SerializeField] private GenericEventScriptableObject _purchaseUpgradeEvent;
     [SerializeField] private FactoryValuesScriptableObject _factoryValuesSO;
     [SerializeField] private PlayerCurrencyManagerScriptableObject _playerCurrenyManagerSO;
+    [SerializeField] private LastTimerUpdateScriptableObject _lastTimerUpdate;
 
     private void Awake()
     {
@@ -21,6 +27,10 @@ public class FactoryTester : MonoBehaviour
         _printCurrencyValues.onClick.AddListener(PrintOutCurrencyValues);
         _addCurrency.onClick.AddListener(AddCurrencyTier1);
         _purchaseUpgrade.onClick.AddListener(PurchaseUpgrade);
+
+        _resetFactoryValues.onClick.AddListener(ResetFactoryValues);
+        _resetCurrency.onClick.AddListener(ResetCurrency);
+        _resetTimer.onClick.AddListener(ResetTimer);
 
         _purchaseUpgradeEvent.OnEventRaised += PurchaseUpgradeEventFired;
 
@@ -39,6 +49,10 @@ public class FactoryTester : MonoBehaviour
         _printCurrencyValues.onClick.RemoveAllListeners();
         _addCurrency.onClick.RemoveAllListeners();
         _purchaseUpgrade.onClick.RemoveAllListeners();
+
+        _resetFactoryValues.onClick.RemoveAllListeners();
+        _resetCurrency.onClick.RemoveAllListeners();
+        _resetTimer.onClick.RemoveAllListeners();
 
         _purchaseUpgradeEvent.OnEventRaised -= PurchaseUpgradeEventFired;
 
@@ -94,7 +108,7 @@ public class FactoryTester : MonoBehaviour
 
     private void CurrencyTier1Changed(double tier1Amount)
     {
-        Debug.Log("CurrencyTier1Changed: " + tier1Amount.ToString());
+       // Debug.Log("CurrencyTier1Changed: " + tier1Amount.ToString());
     }
 
     private void LevelChanged(int level)
@@ -114,11 +128,36 @@ public class FactoryTester : MonoBehaviour
 
     private void IsUpgradeAffordable(bool isItAffordable)
     {
-        Debug.Log("IsUpgradeAffordable : " + isItAffordable.ToString());
+        //if (isItAffordable)
+        //    Debug.Log("IsUpgradeAffordable : " + isItAffordable.ToString());
     }
 
-    private void PayoutTimeRemainingChanged(float timeRemaining)
+    //private void PayoutTimeRemainingChanged(float timeRemaining)
+    //{
+    //    Debug.Log("PayoutTimeRemainingChanged : " + timeRemaining.ToString());
+    //}
+
+    private void ResetFactoryValues()
     {
-        Debug.Log("PayoutTimeRemainingChanged : " + timeRemaining.ToString());
+        Debug.Log("Factory Values Reset");
+
+        _factoryValuesSO.LevelSO.Value = 1;
+        _factoryValuesSO.PayoutAmountSO.Value = _factoryValuesSO.BasePayoutAmount;
+        _factoryValuesSO.UpgradeCostSO.Value = _factoryValuesSO.BaseUpgradeCost;
+        _factoryValuesSO.PayoutTimeRemainingSO.Value = _factoryValuesSO.TimeBetweenPayouts;
+    }
+
+    private void ResetCurrency()
+    {
+        Debug.Log("Currency Reset");
+
+        _playerCurrenyManagerSO.SpendTier1Currency(_playerCurrenyManagerSO.CurrencyTier1.Value);
+    }
+
+    private void ResetTimer()
+    {
+        Debug.Log("Timer Reset");
+
+        _lastTimerUpdate.Value = DateTime.Now;
     }
 }

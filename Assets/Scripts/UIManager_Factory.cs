@@ -33,7 +33,7 @@ public class UIManager_Factory : MonoBehaviour
         _factoryValuesSO.IsUpgradeAffordableSO.OnValueChanged.RemoveListener(IsUpgradeAffordable);
     }
 
-    private void PayoutTimeRemainingChanged(float timeRemaining)
+    private void PayoutTimeRemainingChanged(double timeRemaining)
     {
         // TODO : update UI
     }

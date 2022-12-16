@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: FactoryOne_PayoutAmount
   m_EditorClassIdentifier: 
   description: 
-  _value: 0
+  _value: 16.06

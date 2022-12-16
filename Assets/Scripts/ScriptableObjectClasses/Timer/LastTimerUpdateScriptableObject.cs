@@ -11,5 +11,4 @@ public class LastTimerUpdateScriptableObject : DescriptionBaseSO
         get { return new DateTime(_ticks); }
         set { _ticks = value.Ticks; }
     }
-
 }
