@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1647842639, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.9660034
+      objectReference: {fileID: 0}
     - target: {fileID: 2087137425943476164, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
       propertyPath: _factoryValuesSO
       value: 
@@ -15,6 +19,18 @@ PrefabInstance:
       propertyPath: _purchaseUpgradeEvent
       value: 
       objectReference: {fileID: 11400000, guid: a24a93d10d274f04d975b0827d8ce0e4, type: 2}
+    - target: {fileID: 3395503616487393750, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 3395503616487393750, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 278
+      objectReference: {fileID: 0}
+    - target: {fileID: 3395503616487393750, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3437042724621585277, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
       propertyPath: m_RootOrder
       value: 0
