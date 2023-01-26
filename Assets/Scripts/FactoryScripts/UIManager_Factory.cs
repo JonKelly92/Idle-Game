@@ -10,7 +10,6 @@ public class UIManager_Factory : MonoBehaviour
 
     [SerializeField] private Color _upgradeBtnUnlocked;
     [SerializeField] private Color _upgradeBtnLocked;
-  //  [SerializeField] private Image _upgradeBtnImage; // used to change the color of the image on the button 
     [SerializeField] private Button _upgradeBtn;
     [SerializeField] private Image _lock; // show the lock when the player can't afford to purchase this factory 
     [SerializeField] private Image _progressBar;

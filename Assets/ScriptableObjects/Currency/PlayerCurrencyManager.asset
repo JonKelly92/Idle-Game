@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: PlayerCurrencyManager
   m_EditorClassIdentifier: 
   <CurrencyTier1>k__BackingField: {fileID: 11400000, guid: 68a13b4036408d4449c6777bd35909e1, type: 2}
+  <CurrencyTier2>k__BackingField: {fileID: 11400000, guid: 772f22b680855754ea454d2e5c05851d, type: 2}

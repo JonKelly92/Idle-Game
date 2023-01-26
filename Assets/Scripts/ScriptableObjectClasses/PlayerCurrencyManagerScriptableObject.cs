@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="PlayerCurrencyManager", menuName = "ScriptableObjects/PlayerCurrencyManager")]
+[CreateAssetMenu(fileName = "PlayerCurrencyManager", menuName = "ScriptableObjects/PlayerCurrencyManager")]
 public class PlayerCurrencyManagerScriptableObject : ScriptableObject
 {
     /*
@@ -14,6 +14,7 @@ public class PlayerCurrencyManagerScriptableObject : ScriptableObject
      */
 
     [field: SerializeField] public DoubleVariable CurrencyTier1 { get; private set; }
+    [field: SerializeField] public DoubleVariable CurrencyTier2 { get; private set; }
 
 
     /// <summary>
@@ -23,7 +24,7 @@ public class PlayerCurrencyManagerScriptableObject : ScriptableObject
     /// <returns></returns>
     public bool IsThisAfforable_Tier1(double cost)
     {
-        if(cost <= CurrencyTier1.Value)
+        if (cost <= CurrencyTier1.Value)
             return true;
         else
             return false;
@@ -36,7 +37,7 @@ public class PlayerCurrencyManagerScriptableObject : ScriptableObject
     /// <returns></returns>
     public bool SpendTier1Currency(double amountToSpend)
     {
-        if(IsThisAfforable_Tier1(amountToSpend))
+        if (IsThisAfforable_Tier1(amountToSpend))
         {
             CurrencyTier1.Value -= amountToSpend;
 
