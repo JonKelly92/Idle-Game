@@ -1,9 +1,23 @@
+using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class UIManager_Factory : MonoBehaviour
 {
     [SerializeField] private GenericEventScriptableObject _purchaseUpgradeEvent;
     [SerializeField] private FactoryValuesScriptableObject _factoryValuesSO;
+
+
+    [SerializeField] private Color _upgradeBtnUnlocked;
+    [SerializeField] private Color _upgradeBtnLocked;
+  //  [SerializeField] private Image _upgradeBtnImage; // used to change the color of the image on the button 
+    [SerializeField] private Button _upgradeBtn;
+    [SerializeField] private Image _lock; // show the lock when the player can't afford to purchase this factory 
+    [SerializeField] private Image _progressBar;
+    [SerializeField] private TextMeshProUGUI _payoutAmount;
+    [SerializeField] private TextMeshProUGUI _currentLevel; // this also shows the next level milestone i.e. 10/25
+    [SerializeField] private TextMeshProUGUI _upgradeCost; // cost to purchase next level
+    [SerializeField] private TextMeshProUGUI _purchaseMultiplier; // i.e. 1, 10, 100, Max
 
 
     private void Awake()
@@ -13,6 +27,8 @@ public class UIManager_Factory : MonoBehaviour
         _factoryValuesSO.PayoutAmountSO.OnValueChanged.AddListener(PayoutAmountChanged);
         _factoryValuesSO.UpgradeCostSO.OnValueChanged.AddListener(UpgradeCostChanged);
         _factoryValuesSO.IsUpgradeAffordableSO.OnValueChanged.AddListener(IsUpgradeAffordable);
+
+        _upgradeBtn.onClick.AddListener(PurchaseUpgrade);
     }
 
     private void Start()
@@ -31,31 +47,37 @@ public class UIManager_Factory : MonoBehaviour
         _factoryValuesSO.PayoutAmountSO.OnValueChanged.RemoveListener(PayoutAmountChanged);
         _factoryValuesSO.UpgradeCostSO.OnValueChanged.RemoveListener(UpgradeCostChanged);
         _factoryValuesSO.IsUpgradeAffordableSO.OnValueChanged.RemoveListener(IsUpgradeAffordable);
+
+        _upgradeBtn.onClick.RemoveAllListeners();
     }
 
     private void PayoutTimeRemainingChanged(double timeRemaining)
     {
         // TODO : update UI
+        // check Udemy course
     }
 
     private void LevelChanged(int level)
     {
-        // TODO : update UI
+        _currentLevel.SetText(level.ToString());
     }
 
     private void PayoutAmountChanged(double payoutAmount)
     {
-        // TODO : update UI
+        _payoutAmount.SetText(payoutAmount.ToString());
     }
 
     private void UpgradeCostChanged(double upgradeCost)
     {
-        // TODO : update UI  
+        _upgradeCost.SetText(upgradeCost.ToString());
     }
 
     private void IsUpgradeAffordable(bool isItAffordable)
     {
-        // TOOD : update UI
+        if (isItAffordable)
+            _upgradeBtn.image.color = _upgradeBtnUnlocked;
+        else
+            _upgradeBtn.image.color = _upgradeBtnLocked;
     }
 
 

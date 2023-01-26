@@ -47,7 +47,7 @@ public class PlayerCurrencyManagerScriptableObject : ScriptableObject
     }
 
     /// <summary>
-    /// Increases the amount of Currency Tier 1 that the play has
+    /// Increases the amount of CurrencyTier1 that the play has
     /// </summary>
     /// <param name="amountGained"></param>
     public void AddTier1Currency(double amountGained)
