@@ -141,7 +141,7 @@ public class FactoryTester : MonoBehaviour
     {
         Debug.Log("Factory Values Reset");
 
-        _factoryValuesSO.LevelSO.Value = 1;
+        _factoryValuesSO.LevelSO.Value = 0;
         _factoryValuesSO.PayoutAmountSO.Value = _factoryValuesSO.BasePayoutAmount;
         _factoryValuesSO.UpgradeCostSO.Value = _factoryValuesSO.BaseUpgradeCost;
         _factoryValuesSO.PayoutTimeRemainingSO.Value = _factoryValuesSO.TimeBetweenPayouts;

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4f38bfb72efeaa4fa0800ebc9bb9dc4, type: 3}
-  m_Name: FactoryOne_IsUpgradeAffordable
+  m_Name: FactoryTwo_IsUpgradeAffordable
   m_EditorClassIdentifier: 
   description: 
-  _value: 1
+  _value: 0

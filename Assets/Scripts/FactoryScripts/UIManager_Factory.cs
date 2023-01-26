@@ -10,8 +10,9 @@ public class UIManager_Factory : MonoBehaviour
 
     [SerializeField] private Color _upgradeBtnUnlocked;
     [SerializeField] private Color _upgradeBtnLocked;
+
     [SerializeField] private Button _upgradeBtn;
-    [SerializeField] private Image _lock; // show the lock when the player can't afford to purchase this factory 
+    [SerializeField] private GameObject _lock; // show the lock when the player can't afford to purchase this factory 
     [SerializeField] private Image _progressBar;
     [SerializeField] private TextMeshProUGUI _payoutAmount;
     [SerializeField] private TextMeshProUGUI _currentLevel; // this also shows the next level milestone i.e. 10/25
@@ -37,6 +38,9 @@ public class UIManager_Factory : MonoBehaviour
         LevelChanged(_factoryValuesSO.LevelSO.Value);
         PayoutAmountChanged(_factoryValuesSO.PayoutAmountSO.Value);
         UpgradeCostChanged(_factoryValuesSO.UpgradeCostSO.Value);
+
+        if(_factoryValuesSO.LevelSO.Value > 0)
+            _lock.SetActive(false);
     }
 
     private void OnDestroy()
@@ -58,6 +62,11 @@ public class UIManager_Factory : MonoBehaviour
 
     private void LevelChanged(int level)
     {
+        if(_factoryValuesSO.LevelSO.Value > 0)
+            _lock.SetActive(false);
+        else
+            _lock.SetActive(true); // this is primarily here for testing purposes
+
         _currentLevel.SetText(level.ToString());
     }
 

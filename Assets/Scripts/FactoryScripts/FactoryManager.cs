@@ -20,8 +20,8 @@ public class FactoryManager : MonoBehaviour
     private void Start()
     {
         // Initialize values in case they have never been used before
-        if (_factoryValuesSO.LevelSO.Value == 0)
-            _factoryValuesSO.LevelSO.Value = 1;
+        // if (_factoryValuesSO.LevelSO.Value == 0)
+        //     _factoryValuesSO.LevelSO.Value = 1;
 
         if (_factoryValuesSO.PayoutAmountSO.Value < _factoryValuesSO.BasePayoutAmount)
             _factoryValuesSO.PayoutAmountSO.Value = _factoryValuesSO.BasePayoutAmount;
@@ -41,19 +41,25 @@ public class FactoryManager : MonoBehaviour
         _playerCurrenyManagerSO.CurrencyTier1.OnValueChanged.RemoveListener(CurrencyTier1Changed);
     }
 
+    #region Events
+
     // time recieved is in milliseconds
     private void OnTimerTick(double timeSinceLastTick)
     {
+        // the player needs to upgrade to level 1 to start getting payouts
+        if(_factoryValuesSO.LevelSO.Value == 0)
+            return;
+
         if (timeSinceLastTick > _factoryValuesSO.PayoutTimeRemainingSO.Value)
         {
             int numberOfPayouts = 0;
 
             // subtract the remaining time from this pay out period and add 1 payout
-            timeSinceLastTick -= _factoryValuesSO.PayoutTimeRemainingSO.Value; 
+            timeSinceLastTick -= _factoryValuesSO.PayoutTimeRemainingSO.Value;
             numberOfPayouts++;
 
             // determine how many more pay out periods have passed and add that many payouts
-            numberOfPayouts += (int)Math.Truncate(timeSinceLastTick / _factoryValuesSO.TimeBetweenPayouts); 
+            numberOfPayouts += (int)Math.Truncate(timeSinceLastTick / _factoryValuesSO.TimeBetweenPayouts);
 
             // pay the player for each pay out
             _playerCurrenyManagerSO.AddTier1Currency(numberOfPayouts * _factoryValuesSO.PayoutAmountSO.Value);
@@ -87,6 +93,8 @@ public class FactoryManager : MonoBehaviour
         bool isUpgradeAffordableCheck = _playerCurrenyManagerSO.IsThisAfforable_Tier1(_factoryValuesSO.UpgradeCostSO.Value);
         _factoryValuesSO.IsUpgradeAffordableSO.Value = isUpgradeAffordableCheck;
     }
+
+    #endregion
 
     private void IncreaseLevel() => SetLevel(_factoryValuesSO.LevelSO.Value + 1);
 
