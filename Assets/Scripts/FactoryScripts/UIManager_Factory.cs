@@ -1,3 +1,4 @@
+using System;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
@@ -6,12 +7,12 @@ public class UIManager_Factory : MonoBehaviour
 {
     [SerializeField] private GenericEventScriptableObject _purchaseUpgradeEvent;
     [SerializeField] private FactoryValuesScriptableObject _factoryValuesSO;
-
+    [SerializeField] private PurchaseMultiplierScriptableObject _purchaseMultiplierSO;
 
     [SerializeField] private Color _upgradeBtnUnlocked;
     [SerializeField] private Color _upgradeBtnLocked;
-
     [SerializeField] private Button _upgradeBtn;
+
     [SerializeField] private GameObject _lock; // show the lock when the player can't afford to purchase this factory 
     [SerializeField] private Image _progressBar;
     [SerializeField] private TextMeshProUGUI _payoutAmount;
@@ -28,6 +29,8 @@ public class UIManager_Factory : MonoBehaviour
         _factoryValuesSO.UpgradeCostSO.OnValueChanged.AddListener(UpgradeCostChanged);
         _factoryValuesSO.IsUpgradeAffordableSO.OnValueChanged.AddListener(IsUpgradeAffordable);
 
+        _purchaseMultiplierSO.OnValueChanged.AddListener(PurchaseMultiplierChanged);
+
         _upgradeBtn.onClick.AddListener(PurchaseUpgrade);
     }
 
@@ -39,8 +42,10 @@ public class UIManager_Factory : MonoBehaviour
         PayoutAmountChanged(_factoryValuesSO.PayoutAmountSO.Value);
         UpgradeCostChanged(_factoryValuesSO.UpgradeCostSO.Value);
 
-        if(_factoryValuesSO.LevelSO.Value > 0)
+        if (_factoryValuesSO.LevelSO.Value > 0)
             _lock.SetActive(false);
+
+        PurchaseMultiplierChanged(_purchaseMultiplierSO.Value);
     }
 
     private void OnDestroy()
@@ -51,18 +56,21 @@ public class UIManager_Factory : MonoBehaviour
         _factoryValuesSO.UpgradeCostSO.OnValueChanged.RemoveListener(UpgradeCostChanged);
         _factoryValuesSO.IsUpgradeAffordableSO.OnValueChanged.RemoveListener(IsUpgradeAffordable);
 
+        _purchaseMultiplierSO.OnValueChanged.RemoveListener(PurchaseMultiplierChanged);
+
         _upgradeBtn.onClick.RemoveAllListeners();
     }
 
     private void PayoutTimeRemainingChanged(double timeRemaining)
     {
-        // TODO : update UI
-        // check Udemy course
+        double percentageOfProgress = Math.Clamp((_factoryValuesSO.PayoutTimeRemainingSO.Value / _factoryValuesSO.TimeBetweenPayouts), 0, 1);
+
+        _progressBar.fillAmount = (float)percentageOfProgress;
     }
 
     private void LevelChanged(int level)
     {
-        if(_factoryValuesSO.LevelSO.Value > 0)
+        if (_factoryValuesSO.LevelSO.Value > 0)
             _lock.SetActive(false);
         else
             _lock.SetActive(true); // this is primarily here for testing purposes
@@ -86,6 +94,10 @@ public class UIManager_Factory : MonoBehaviour
             _upgradeBtn.image.color = _upgradeBtnUnlocked;
         else
             _upgradeBtn.image.color = _upgradeBtnLocked;
+    }
+    private void PurchaseMultiplierChanged(PurchaseMultiplierEnum multiplier)
+    {
+        _purchaseMultiplier.SetText("Buy " + multiplier.ToString());
     }
 
 

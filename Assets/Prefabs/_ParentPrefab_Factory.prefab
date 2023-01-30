@@ -971,7 +971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -985,7 +985,7 @@ MonoBehaviour:
   m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &2144364332
@@ -1170,6 +1170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _purchaseUpgradeEvent: {fileID: 0}
   _factoryValuesSO: {fileID: 0}
+  _purchaseMultiplierSO: {fileID: 11400000, guid: be22a21c97e948e4088c9f1124296f0b, type: 2}
   _timerTickEvent: {fileID: 11400000, guid: 8e387ae76f1f6f8449cd5f86b82c3415, type: 2}
   _playerCurrenyManagerSO: {fileID: 11400000, guid: 39b44479021fcdb4d8a3d5ad816ef365, type: 2}
 --- !u!114 &2087137425943476164
@@ -1186,6 +1187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _purchaseUpgradeEvent: {fileID: 0}
   _factoryValuesSO: {fileID: 0}
+  _purchaseMultiplierSO: {fileID: 11400000, guid: be22a21c97e948e4088c9f1124296f0b, type: 2}
   _upgradeBtnUnlocked: {r: 1, g: 1, b: 1, a: 1}
   _upgradeBtnLocked: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   _upgradeBtn: {fileID: 740780181}

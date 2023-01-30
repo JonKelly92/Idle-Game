@@ -6,9 +6,16 @@ public class LastTimerUpdateScriptableObject : DescriptionBaseSO
 {
     private long _ticks;
 
-    public DateTime Value 
-    { 
+    [SerializeField] private string DateAndTime; // for debugging
+
+    public DateTime Value
+    {
         get { return new DateTime(_ticks); }
-        set { _ticks = value.Ticks; }
+        set
+        {
+            _ticks = value.Ticks;
+
+            DateAndTime = new DateTime(_ticks).ToString();
+        }
     }
 }

@@ -5,12 +5,14 @@ public class FactoryManager : MonoBehaviour
 {
     [SerializeField] private GenericEventScriptableObject _purchaseUpgradeEvent;
     [SerializeField] private FactoryValuesScriptableObject _factoryValuesSO;
+    [SerializeField] private PurchaseMultiplierScriptableObject _purchaseMultiplierSO;
     [SerializeField] private TimerTickEvent _timerTickEvent;
     [SerializeField] private PlayerCurrencyManagerScriptableObject _playerCurrenyManagerSO;
 
     private void Awake()
     {
         _timerTickEvent.OnTimerTick.AddListener(OnTimerTick);
+        _purchaseMultiplierSO.OnValueChanged.AddListener(PurchaseMultiplierChanged);
 
         _purchaseUpgradeEvent.OnEventRaised += PurchaseUpgrade;
 
@@ -35,6 +37,7 @@ public class FactoryManager : MonoBehaviour
     private void OnDestroy()
     {
         _timerTickEvent.OnTimerTick.RemoveListener(OnTimerTick);
+        _purchaseMultiplierSO.OnValueChanged.RemoveListener(PurchaseMultiplierChanged);
 
         _purchaseUpgradeEvent.OnEventRaised -= PurchaseUpgrade;
 
@@ -43,11 +46,11 @@ public class FactoryManager : MonoBehaviour
 
     #region Events
 
-    // time recieved is in milliseconds
+    // time is recieved in milliseconds
     private void OnTimerTick(double timeSinceLastTick)
     {
         // the player needs to upgrade to level 1 to start getting payouts
-        if(_factoryValuesSO.LevelSO.Value == 0)
+        if (_factoryValuesSO.LevelSO.Value == 0)
             return;
 
         if (timeSinceLastTick > _factoryValuesSO.PayoutTimeRemainingSO.Value)
@@ -73,6 +76,56 @@ public class FactoryManager : MonoBehaviour
         {
             _factoryValuesSO.PayoutTimeRemainingSO.Value -= timeSinceLastTick;
         }
+    }
+
+    private void PurchaseMultiplierChanged(PurchaseMultiplierEnum multiplier)
+    {
+        /*
+
+        What do we want?
+
+            - we need to calculate the UpgradeCost to reflect the multiplier the player has selected
+            - for Max if the player cannot afford to buy 1 upgrade then still show the cost of 1 upgrade
+
+        What variables do we need?
+
+            - LevelSO
+            - BaseUpgradeCost
+            - BaseUpgradeMultiplier
+
+
+        ** Calculating for a specified number of levels
+        level = currentLevel + multiplier
+        var costForUpgrade = BaseUpgradeCost
+        for(int i; i < level; i++)
+        {
+            costForUpgrade *= BaseUpgradeMultiplier;
+        }
+
+        ** Calculating for Max number of levels
+        level = currentLevel;
+        var money = amount of moeny currently available
+        var costForUpgrade = BaseUpgradeCost
+        var nextUpgrade = 0
+        for(int i; i < level; i++)
+        {
+            nextUpgrade = costForUpgrade * BaseUpgradeMultiplier;
+
+            if(costForUpgrade >= nextUpgrade)
+            {
+                costForUpgrade = nextUpgrade; // cost for those levels
+                level++; // amount of levels that can be purchased
+            }
+            else
+            {
+                break;
+            }
+        }
+
+
+        */
+        
+
     }
 
     private void PurchaseUpgrade()
