@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+// entries in this enum must only be Max or a number starting with x. Max must always be at the end of the list.
 public enum PurchaseMultiplierEnum
 {
     x1 = 0,

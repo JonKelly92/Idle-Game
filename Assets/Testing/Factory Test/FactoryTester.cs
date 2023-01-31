@@ -152,6 +152,7 @@ public class FactoryTester : MonoBehaviour
         Debug.Log("Currency Reset");
 
         _playerCurrenyManagerSO.SpendTier1Currency(_playerCurrenyManagerSO.CurrencyTier1.Value);
+        _playerCurrenyManagerSO.AddTier1Currency(_factoryValuesSO.BaseUpgradeCost * 2);
     }
 
     private void ResetTimer()

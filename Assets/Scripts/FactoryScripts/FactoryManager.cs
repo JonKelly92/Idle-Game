@@ -13,41 +13,64 @@ public class FactoryManager : MonoBehaviour
     {
         _timerTickEvent.OnTimerTick.AddListener(OnTimerTick);
         _purchaseMultiplierSO.OnValueChanged.AddListener(PurchaseMultiplierChanged);
+        _playerCurrenyManagerSO.CurrencyTier1.OnValueChanged.AddListener(CurrencyTier1Changed);
 
         _purchaseUpgradeEvent.OnEventRaised += PurchaseUpgrade;
-
-        _playerCurrenyManagerSO.CurrencyTier1.OnValueChanged.AddListener(CurrencyTier1Changed);
     }
 
     private void Start()
     {
         // Initialize values in case they have never been used before
-        // if (_factoryValuesSO.LevelSO.Value == 0)
-        //     _factoryValuesSO.LevelSO.Value = 1;
-
         if (_factoryValuesSO.PayoutAmountSO.Value < _factoryValuesSO.BasePayoutAmount)
             _factoryValuesSO.PayoutAmountSO.Value = _factoryValuesSO.BasePayoutAmount;
 
         if (_factoryValuesSO.UpgradeCostSO.Value < _factoryValuesSO.BaseUpgradeCost)
             _factoryValuesSO.UpgradeCostSO.Value = _factoryValuesSO.BaseUpgradeCost;
 
+        // This makes sure the UI is displaying the correct values
         CurrencyTier1Changed(_playerCurrenyManagerSO.CurrencyTier1.Value);
+        CalculateUpgradeCostForMultiplier(_purchaseMultiplierSO.Value);
     }
 
     private void OnDestroy()
     {
         _timerTickEvent.OnTimerTick.RemoveListener(OnTimerTick);
         _purchaseMultiplierSO.OnValueChanged.RemoveListener(PurchaseMultiplierChanged);
+        _playerCurrenyManagerSO.CurrencyTier1.OnValueChanged.RemoveListener(CurrencyTier1Changed);
 
         _purchaseUpgradeEvent.OnEventRaised -= PurchaseUpgrade;
-
-        _playerCurrenyManagerSO.CurrencyTier1.OnValueChanged.RemoveListener(CurrencyTier1Changed);
     }
 
     #region Events
 
     // time is recieved in milliseconds
     private void OnTimerTick(double timeSinceLastTick)
+    {
+        CalculatePayout(timeSinceLastTick);
+    }
+
+    private void PurchaseMultiplierChanged(PurchaseMultiplierEnum multiplier)
+    {
+        CalculateUpgradeCostForMultiplier(multiplier);
+    }
+
+    private void PurchaseUpgrade()
+    {
+        PurchaseLevelUpgrade();
+    }
+
+    private void CurrencyTier1Changed(double tier1Amount)
+    {
+        if (_purchaseMultiplierSO.Value == PurchaseMultiplierEnum.Max)
+            CalculateUpgradeCostForMaxLevels();
+
+        CheckIfUpgradeIsAffordable();
+    }
+
+    #endregion
+
+    // Calculating if there payout period has ended, how many payout periods have ended (offline earnings) and how much the player should be paid
+    private void CalculatePayout(double timeSinceLastTick)
     {
         // the player needs to upgrade to level 1 to start getting payouts
         if (_factoryValuesSO.LevelSO.Value == 0)
@@ -78,85 +101,121 @@ public class FactoryManager : MonoBehaviour
         }
     }
 
-    private void PurchaseMultiplierChanged(PurchaseMultiplierEnum multiplier)
-    {
-        /*
-
-        What do we want?
-
-            - we need to calculate the UpgradeCost to reflect the multiplier the player has selected
-            - for Max if the player cannot afford to buy 1 upgrade then still show the cost of 1 upgrade
-
-        What variables do we need?
-
-            - LevelSO
-            - BaseUpgradeCost
-            - BaseUpgradeMultiplier
-
-
-        ** Calculating for a specified number of levels
-        level = currentLevel + multiplier
-        var costForUpgrade = BaseUpgradeCost
-        for(int i; i < level; i++)
-        {
-            costForUpgrade *= BaseUpgradeMultiplier;
-        }
-
-        ** Calculating for Max number of levels
-        level = currentLevel;
-        var money = amount of moeny currently available
-        var costForUpgrade = BaseUpgradeCost
-        var nextUpgrade = 0
-        for(int i; i < level; i++)
-        {
-            nextUpgrade = costForUpgrade * BaseUpgradeMultiplier;
-
-            if(costForUpgrade >= nextUpgrade)
-            {
-                costForUpgrade = nextUpgrade; // cost for those levels
-                level++; // amount of levels that can be purchased
-            }
-            else
-            {
-                break;
-            }
-        }
-
-
-        */
-        
-
-    }
-
-    private void PurchaseUpgrade()
-    {
-        if (_playerCurrenyManagerSO.SpendTier1Currency(_factoryValuesSO.UpgradeCostSO.Value))
-        {
-            // Upgrade was successfully purchased
-            IncreaseLevel();
-        }
-        else
-            Debug.LogWarning("Failed to purchase upgrade for " + _factoryValuesSO.FactoryName);
-    }
-
-    // The Tier 1 currency has changed (increased or decreased) so we check if the player can afford the next upgrade and then update the SO
-    // Which in turn sends an event to update the UI
-    private void CurrencyTier1Changed(double tier1Amount)
+    private bool CheckIfUpgradeIsAffordable()
     {
         bool isUpgradeAffordableCheck = _playerCurrenyManagerSO.IsThisAfforable_Tier1(_factoryValuesSO.UpgradeCostSO.Value);
         _factoryValuesSO.IsUpgradeAffordableSO.Value = isUpgradeAffordableCheck;
+
+        return isUpgradeAffordableCheck;
     }
 
-    #endregion
-
-    private void IncreaseLevel() => SetLevel(_factoryValuesSO.LevelSO.Value + 1);
-
-    private void SetLevel(int newLevel)
+    private int CalculateUpgradeCostForMultiplier(PurchaseMultiplierEnum multiplier)
     {
-        _factoryValuesSO.LevelSO.Value = newLevel;
+        int levelsPlayerCanAfford = 0;
 
-        _factoryValuesSO.PayoutAmountSO.Value = _factoryValuesSO.PayoutMultiplier * _factoryValuesSO.PayoutAmountSO.Value;
+        if (multiplier != PurchaseMultiplierEnum.Max)
+            levelsPlayerCanAfford = CalculateUpgradeCostForLevel(multiplier);
+        else
+            levelsPlayerCanAfford = CalculateUpgradeCostForMaxLevels();
 
-        _factoryValuesSO.UpgradeCostSO.Value = _factoryValuesSO.BaseUpgradeMultiplier * _factoryValuesSO.UpgradeCostSO.Value;
+        return levelsPlayerCanAfford;
+    }
+
+    // Calulates the new Upgrade Cost value and updates it
+    // it will then return the amount of levels the player can afford, either the amount of the muliplier or 0
+    private int CalculateUpgradeCostForLevel(PurchaseMultiplierEnum multiplier)
+    {
+        int amountOfLevels = 0;
+
+        string multiplierAsString = multiplier.ToString();
+        multiplierAsString = multiplierAsString.Remove(0, 1);
+        if (!int.TryParse(multiplierAsString, out amountOfLevels))
+        {
+            Debug.LogError("Failed to parse the multiplier enum into an integer");
+            return 0;
+        }
+
+        var levels = _factoryValuesSO.LevelSO.Value + amountOfLevels;
+        var costForUpgrade = _factoryValuesSO.BaseUpgradeCost;
+
+        for (int i = 0; i < levels; i++)
+        {
+            costForUpgrade *= _factoryValuesSO.BaseUpgradeMultiplier;
+        }
+
+        _factoryValuesSO.UpgradeCostSO.Value = costForUpgrade;
+
+        if (CheckIfUpgradeIsAffordable())
+            return levels;
+        else
+            return 0;
+    }
+
+    // Calulates the new Upgrade Cost value for the highest level the player can afford then it automatically updates it
+    // if the player can't to upgrade at all then the Upgrade Cost value will still show the cost for x1 levels 
+    // it will then return the amount of levels the player can afford 
+    private int CalculateUpgradeCostForMaxLevels()
+    {
+        int amountOfLevels = 0;
+        double nextUpgrade = _factoryValuesSO.BaseUpgradeCost * _factoryValuesSO.BaseUpgradeMultiplier;
+        double upgradeCost = nextUpgrade;
+
+        while (true)
+        {
+            if (_playerCurrenyManagerSO.CurrencyTier1.Value >= nextUpgrade)
+            {
+                amountOfLevels++; 
+                upgradeCost = nextUpgrade;
+            }
+            else
+                break;
+
+            nextUpgrade = nextUpgrade * _factoryValuesSO.BaseUpgradeMultiplier;
+        }
+
+        _factoryValuesSO.UpgradeCostSO.Value = upgradeCost;
+
+        CheckIfUpgradeIsAffordable();
+
+        return amountOfLevels;
+    }
+
+    // Presumably the player has upgraded their factory and now we are calculating how much they get paid
+    private void CalculateNewPayoutAmount()
+    {
+        var payoutAmount = _factoryValuesSO.PayoutAmountSO.Value;
+        for (int i = 0; i < _factoryValuesSO.LevelSO.Value; i++)
+        {
+            payoutAmount *= _factoryValuesSO.PayoutMultiplier;
+        }
+
+        _factoryValuesSO.PayoutAmountSO.Value = payoutAmount;
+    }
+
+    private void PurchaseLevelUpgrade()
+    {
+        int amountOfLevels = CalculateUpgradeCostForMultiplier(_purchaseMultiplierSO.Value);
+
+        if (amountOfLevels == 0)
+            return;
+
+        // attempt to purchase the upgrade
+        if (!_playerCurrenyManagerSO.SpendTier1Currency(_factoryValuesSO.UpgradeCostSO.Value))
+        {
+            Debug.LogWarning("Failed to purchase upgrade for " + _factoryValuesSO.FactoryName);
+            return;
+        }
+
+        // Set Level to amount of levels
+        _factoryValuesSO.LevelSO.Value = amountOfLevels;
+
+        // Calculate the new payout amount
+        CalculateNewPayoutAmount();
+
+        // Calculate the cost for the next upgrade
+        CalculateUpgradeCostForMultiplier(_purchaseMultiplierSO.Value);
+
+        // Check to see if the player can afford the next upgrade
+        CheckIfUpgradeIsAffordable();
     }
 }

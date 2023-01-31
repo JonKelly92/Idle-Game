@@ -15,6 +15,12 @@ public class UIManager_TopBar : MonoBehaviour
         _playerCurrenyManagerSO.CurrencyTier2.OnValueChanged.AddListener(CurrencyTier2Changed);
     }
 
+    private void Start()
+    {
+        CurrencyTier1Changed(_playerCurrenyManagerSO.CurrencyTier1.Value);
+        CurrencyTier2Changed(_playerCurrenyManagerSO.CurrencyTier2.Value);
+    }
+
     private void OnDestroy()
     {
         _playerCurrenyManagerSO.CurrencyTier1.OnValueChanged.RemoveListener(CurrencyTier1Changed);
