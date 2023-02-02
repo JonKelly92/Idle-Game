@@ -1,3 +1,4 @@
+using BreakInfinity;
 using TMPro;
 using UnityEngine;
 
@@ -27,8 +28,8 @@ public class UIManager_TopBar : MonoBehaviour
         _playerCurrenyManagerSO.CurrencyTier2.OnValueChanged.RemoveListener(CurrencyTier2Changed);
     }
 
-    private void CurrencyTier1Changed(double tier1Amount) => _currencyTier1.SetText(tier1Amount.ToString());
+    private void CurrencyTier1Changed(BigDouble tier1Amount) => _currencyTier1.SetText(tier1Amount.ToString());
 
-    private void CurrencyTier2Changed(double tier2Amount) => _currencyTier2.SetText(tier2Amount.ToString());
+    private void CurrencyTier2Changed(BigDouble tier2Amount) => _currencyTier2.SetText(tier2Amount.ToString());
 
 }

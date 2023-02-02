@@ -1,4 +1,5 @@
 using System;
+using BreakInfinity;
 using UnityEngine;
 
 public class FactoryManager : MonoBehaviour
@@ -45,7 +46,7 @@ public class FactoryManager : MonoBehaviour
     #region Events
 
     // time is recieved in milliseconds
-    private void OnTimerTick(double timeSinceLastTick)
+    private void OnTimerTick(BigDouble timeSinceLastTick)
     {
         CalculatePayout(timeSinceLastTick);
     }
@@ -61,7 +62,7 @@ public class FactoryManager : MonoBehaviour
         PurchaseLevelUpgrade();
     }
 
-    private void CurrencyTier1Changed(double tier1Amount)
+    private void CurrencyTier1Changed(BigDouble tier1Amount)
     {
         if (_purchaseMultiplierSO.Value == PurchaseMultiplierEnum.Max)
             CalculateUpgradeCostForMaxLevels();
@@ -72,7 +73,7 @@ public class FactoryManager : MonoBehaviour
     #endregion
 
     // Calculating if there payout period has ended, how many payout periods have ended (offline earnings) and how much the player should be paid
-    private void CalculatePayout(double timeSinceLastTick)
+    private void CalculatePayout(BigDouble timeSinceLastTick)
     {
         // the player needs to upgrade to level 1 to start getting payouts
         if (_factoryValuesSO.LevelSO.Value == 0)
@@ -80,20 +81,20 @@ public class FactoryManager : MonoBehaviour
 
         if (timeSinceLastTick > _factoryValuesSO.PayoutTimeRemainingSO.Value)
         {
-            int numberOfPayouts = 0;
+            BigDouble numberOfPayouts = 0;
 
             // subtract the remaining time from this pay out period and add 1 payout
             timeSinceLastTick -= _factoryValuesSO.PayoutTimeRemainingSO.Value;
             numberOfPayouts++;
 
             // determine how many more pay out periods have passed and add that many payouts
-            numberOfPayouts += (int)Math.Truncate(timeSinceLastTick / _factoryValuesSO.TimeBetweenPayouts);
+            numberOfPayouts += BigDouble.Truncate(timeSinceLastTick / _factoryValuesSO.TimeBetweenPayouts);
 
             // pay the player for each pay out
             _playerCurrenyManagerSO.AddTier1Currency(numberOfPayouts * _factoryValuesSO.PayoutAmountSO.Value);
 
             // this gives us the amount of time that has already passed since the start of this pay out period
-            double timePassThisPeriod = timeSinceLastTick % _factoryValuesSO.TimeBetweenPayouts;
+            BigDouble timePassThisPeriod = timeSinceLastTick % _factoryValuesSO.TimeBetweenPayouts;
             _factoryValuesSO.PayoutTimeRemainingSO.Value = _factoryValuesSO.TimeBetweenPayouts - timePassThisPeriod;
 
         }
@@ -140,10 +141,9 @@ public class FactoryManager : MonoBehaviour
         var b = _factoryValuesSO.BaseUpgradeCost;
         var r = _factoryValuesSO.BaseUpgradeMultiplier;
         var k = _factoryValuesSO.LevelSO.Value;
-        var c = _playerCurrenyManagerSO.CurrencyTier1.Value;
 
         // Calculates the cost of N factories
-        var cost = b * ((Math.Pow(r, k) * (Math.Pow(r, n) - 1)) / (r-1)); 
+        BigDouble cost = b * ((Math.Pow(r, k) * (Math.Pow(r, n) - 1)) / (r-1)); 
 
         _factoryValuesSO.UpgradeCostSO.Value = cost;
 
@@ -161,14 +161,14 @@ public class FactoryManager : MonoBehaviour
 
         // this is a long equation so I broke it up into 2 parts to make it more readable
         var step1 = (c * (r - 1) / (b * Math.Pow(r, k)))+1;
-        var n = Math.Floor(Math.Log(step1) / Math.Log(r)); // number of upgrades the player can afford
+        var n = BigDouble.Floor(BigDouble.Log(step1, Math.E) / Math.Log(r)); // number of upgrades the player can afford
 
         // Calculates the cost of N factories
-        var cost = b * ((Math.Pow(r, k) * (Math.Pow(r, n) - 1)) / (r-1));
+        var cost = b * ((Math.Pow(r, k) * (BigDouble.Pow(r, n) - 1)) / (r-1));
 
         _factoryValuesSO.UpgradeCostSO.Value = cost;
 
-        return (int)n;
+        return Convert.ToInt32(n);
     }
 
     // Presumably the player has upgraded their factory and now we are calculating how much they get paid

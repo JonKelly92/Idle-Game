@@ -1,3 +1,4 @@
+using BreakInfinity;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerCurrencyManager", menuName = "ScriptableObjects/PlayerCurrencyManager")]
@@ -13,8 +14,8 @@ public class PlayerCurrencyManagerScriptableObject : ScriptableObject
         
      */
 
-    [field: SerializeField] public DoubleVariable CurrencyTier1 { get; private set; }
-    [field: SerializeField] public DoubleVariable CurrencyTier2 { get; private set; }
+    [field: SerializeField] public BigDoubleVariable CurrencyTier1 { get; private set; }
+    [field: SerializeField] public BigDoubleVariable CurrencyTier2 { get; private set; }
 
 
     /// <summary>
@@ -22,7 +23,7 @@ public class PlayerCurrencyManagerScriptableObject : ScriptableObject
     /// </summary>
     /// <param name="cost"></param>
     /// <returns></returns>
-    public bool IsThisAfforable_Tier1(double cost)
+    public bool IsThisAfforable_Tier1(BigDouble cost)
     {
         if (cost <= CurrencyTier1.Value)
             return true;
@@ -35,7 +36,7 @@ public class PlayerCurrencyManagerScriptableObject : ScriptableObject
     /// </summary>
     /// <param name="amountToSpend"></param>
     /// <returns></returns>
-    public bool SpendTier1Currency(double amountToSpend)
+    public bool SpendTier1Currency(BigDouble amountToSpend)
     {
         if (IsThisAfforable_Tier1(amountToSpend))
         {
@@ -51,7 +52,7 @@ public class PlayerCurrencyManagerScriptableObject : ScriptableObject
     /// Increases the amount of CurrencyTier1 that the play has
     /// </summary>
     /// <param name="amountGained"></param>
-    public void AddTier1Currency(double amountGained)
+    public void AddTier1Currency(BigDouble amountGained)
     {
         CurrencyTier1.Value += amountGained;
     }

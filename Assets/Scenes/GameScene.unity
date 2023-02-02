@@ -2271,6 +2271,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 877784590, guid: 8450099da73504042acaf2286f7a43d1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512965497, guid: 8450099da73504042acaf2286f7a43d1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -534.70013
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781277769, guid: 8450099da73504042acaf2286f7a43d1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1632845742753991975, guid: 8450099da73504042acaf2286f7a43d1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -542
+      objectReference: {fileID: 0}
     - target: {fileID: 1632845742845288068, guid: 8450099da73504042acaf2286f7a43d1, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2361,11 +2377,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1632845742845288088, guid: 8450099da73504042acaf2286f7a43d1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1632845742845288091, guid: 8450099da73504042acaf2286f7a43d1, type: 3}
       propertyPath: m_SortingOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801890535819784279, guid: 8450099da73504042acaf2286f7a43d1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -534.7001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8450099da73504042acaf2286f7a43d1, type: 3}

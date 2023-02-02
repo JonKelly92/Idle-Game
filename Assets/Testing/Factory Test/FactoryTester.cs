@@ -25,21 +25,21 @@ public class FactoryTester : MonoBehaviour
         _printLine.onClick.AddListener(PrintOutLine);
         _printFactoryValues.onClick.AddListener(PrintOutFactorySOValues);
         _printCurrencyValues.onClick.AddListener(PrintOutCurrencyValues);
-        _addCurrency.onClick.AddListener(AddCurrencyTier1);
-        _purchaseUpgrade.onClick.AddListener(PurchaseUpgrade);
+        // _addCurrency.onClick.AddListener(AddCurrencyTier1);
+        // _purchaseUpgrade.onClick.AddListener(PurchaseUpgrade);
 
         _resetFactoryValues.onClick.AddListener(ResetFactoryValues);
         _resetCurrency.onClick.AddListener(ResetCurrency);
         _resetTimer.onClick.AddListener(ResetTimer);
 
-        _purchaseUpgradeEvent.OnEventRaised += PurchaseUpgradeEventFired;
+        // _purchaseUpgradeEvent.OnEventRaised += PurchaseUpgradeEventFired;
 
-        _playerCurrenyManagerSO.CurrencyTier1.OnValueChanged.AddListener(CurrencyTier1Changed);
+        // _playerCurrenyManagerSO.CurrencyTier1.OnValueChanged.AddListener(CurrencyTier1Changed);
 
-        _factoryValuesSO.LevelSO.OnValueChanged.AddListener(LevelChanged);
-        _factoryValuesSO.PayoutAmountSO.OnValueChanged.AddListener(PayoutAmountChanged);
-        _factoryValuesSO.UpgradeCostSO.OnValueChanged.AddListener(UpgradeCostChanged);
-        _factoryValuesSO.IsUpgradeAffordableSO.OnValueChanged.AddListener(IsUpgradeAffordable);
+        // _factoryValuesSO.LevelSO.OnValueChanged.AddListener(LevelChanged);
+        // _factoryValuesSO.PayoutAmountSO.OnValueChanged.AddListener(PayoutAmountChanged);
+        // _factoryValuesSO.UpgradeCostSO.OnValueChanged.AddListener(UpgradeCostChanged);
+        // _factoryValuesSO.IsUpgradeAffordableSO.OnValueChanged.AddListener(IsUpgradeAffordable);
     }
 
     private void OnDestroy()
@@ -54,14 +54,14 @@ public class FactoryTester : MonoBehaviour
         _resetCurrency.onClick.RemoveAllListeners();
         _resetTimer.onClick.RemoveAllListeners();
 
-        _purchaseUpgradeEvent.OnEventRaised -= PurchaseUpgradeEventFired;
+        // _purchaseUpgradeEvent.OnEventRaised -= PurchaseUpgradeEventFired;
 
-        _playerCurrenyManagerSO.CurrencyTier1.OnValueChanged.RemoveListener(CurrencyTier1Changed);
+        // _playerCurrenyManagerSO.CurrencyTier1.OnValueChanged.RemoveListener(CurrencyTier1Changed);
 
-        _factoryValuesSO.LevelSO.OnValueChanged.RemoveListener(LevelChanged);
-        _factoryValuesSO.PayoutAmountSO.OnValueChanged.RemoveListener(PayoutAmountChanged);
-        _factoryValuesSO.UpgradeCostSO.OnValueChanged.RemoveListener(UpgradeCostChanged);
-        _factoryValuesSO.IsUpgradeAffordableSO.OnValueChanged.RemoveListener(IsUpgradeAffordable);
+        // _factoryValuesSO.LevelSO.OnValueChanged.RemoveListener(LevelChanged);
+        // _factoryValuesSO.PayoutAmountSO.OnValueChanged.RemoveListener(PayoutAmountChanged);
+        // _factoryValuesSO.UpgradeCostSO.OnValueChanged.RemoveListener(UpgradeCostChanged);
+        // _factoryValuesSO.IsUpgradeAffordableSO.OnValueChanged.RemoveListener(IsUpgradeAffordable);
     }
 
     private void PrintOutLine()
@@ -91,46 +91,46 @@ public class FactoryTester : MonoBehaviour
         Debug.Log("Tier 1 : " + _playerCurrenyManagerSO.CurrencyTier1.Value.ToString());
     }
 
-    private void AddCurrencyTier1()
-    {
-        _playerCurrenyManagerSO.AddTier1Currency(_factoryValuesSO.PayoutAmountSO.Value);
-    }
+    // private void AddCurrencyTier1()
+    // {
+    //     _playerCurrenyManagerSO.AddTier1Currency(_factoryValuesSO.PayoutAmountSO.Value);
+    // }
 
-    private void PurchaseUpgrade()
-    {
-        _purchaseUpgradeEvent.SendEvent();
-    }
+    // private void PurchaseUpgrade()
+    // {
+    //     _purchaseUpgradeEvent.SendEvent();
+    // }
 
-    private void PurchaseUpgradeEventFired()
-    {
-        Debug.Log("PurchaseUpgradeEvent Fired");
-    }
+    // private void PurchaseUpgradeEventFired()
+    // {
+    //     Debug.Log("PurchaseUpgradeEvent Fired");
+    // }
 
-    private void CurrencyTier1Changed(double tier1Amount)
-    {
-       // Debug.Log("CurrencyTier1Changed: " + tier1Amount.ToString());
-    }
+    // private void CurrencyTier1Changed(double tier1Amount)
+    // {
+    //    // Debug.Log("CurrencyTier1Changed: " + tier1Amount.ToString());
+    // }
 
-    private void LevelChanged(int level)
-    {
-        Debug.Log("LevelChanged : " + level.ToString());
-    }
+    // private void LevelChanged(int level)
+    // {
+    //     Debug.Log("LevelChanged : " + level.ToString());
+    // }
 
-    private void PayoutAmountChanged(double payoutAmount)
-    {
-        Debug.Log("PayoutAmountChanged : " + payoutAmount.ToString());
-    }
+    // private void PayoutAmountChanged(double payoutAmount)
+    // {
+    //     Debug.Log("PayoutAmountChanged : " + payoutAmount.ToString());
+    // }
 
-    private void UpgradeCostChanged(double upgradeCost)
-    {
-        Debug.Log("UpgradeCostChanged : " + upgradeCost.ToString());
-    }
+    // private void UpgradeCostChanged(double upgradeCost)
+    // {
+    //     Debug.Log("UpgradeCostChanged : " + upgradeCost.ToString());
+    // }
 
-    private void IsUpgradeAffordable(bool isItAffordable)
-    {
-        //if (isItAffordable)
-        //    Debug.Log("IsUpgradeAffordable : " + isItAffordable.ToString());
-    }
+    // private void IsUpgradeAffordable(bool isItAffordable)
+    // {
+    //     //if (isItAffordable)
+    //     //    Debug.Log("IsUpgradeAffordable : " + isItAffordable.ToString());
+    // }
 
     //private void PayoutTimeRemainingChanged(float timeRemaining)
     //{

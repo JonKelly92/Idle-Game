@@ -2,6 +2,7 @@ using System;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using BreakInfinity;
 
 public class UIManager_Factory : MonoBehaviour
 {
@@ -61,9 +62,9 @@ public class UIManager_Factory : MonoBehaviour
         _upgradeBtn.onClick.RemoveAllListeners();
     }
 
-    private void PayoutTimeRemainingChanged(double timeRemaining)
+    private void PayoutTimeRemainingChanged(BigDouble timeRemaining)
     {
-        double percentageOfProgress = Math.Clamp((_factoryValuesSO.PayoutTimeRemainingSO.Value / _factoryValuesSO.TimeBetweenPayouts), 0, 1);
+        Double percentageOfProgress = Convert.ToDouble(BigDouble.Clamp((_factoryValuesSO.PayoutTimeRemainingSO.Value / _factoryValuesSO.TimeBetweenPayouts), 0, 1));
 
         _progressBar.fillAmount = (float)percentageOfProgress;
     }
@@ -78,12 +79,12 @@ public class UIManager_Factory : MonoBehaviour
         _currentLevel.SetText(level.ToString());
     }
 
-    private void PayoutAmountChanged(double payoutAmount)
+    private void PayoutAmountChanged(BigDouble payoutAmount)
     {
         _payoutAmount.SetText(payoutAmount.ToString());
     }
 
-    private void UpgradeCostChanged(double upgradeCost)
+    private void UpgradeCostChanged(BigDouble upgradeCost)
     {
         _upgradeCost.SetText(upgradeCost.ToString());
     }
