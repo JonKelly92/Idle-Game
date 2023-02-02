@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ced8ce8c37ff31d49ab51095f198ea61, type: 3}
-  m_Name: FactoryTwo_Level
+  m_Script: {fileID: 11500000, guid: f5143dd70d138b142b37f7af4f0946b3, type: 3}
+  m_Name: FactoryFour_PurchaseUpgradeEvent
   m_EditorClassIdentifier: 
-  description: 
-  _value: 5
+  description: When the player purchases and upgrade for FactoryTwo this event will
+    fire.

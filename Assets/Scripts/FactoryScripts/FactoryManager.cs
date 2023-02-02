@@ -143,7 +143,7 @@ public class FactoryManager : MonoBehaviour
         var c = _playerCurrenyManagerSO.CurrencyTier1.Value;
 
         // Calculates the cost of N factories
-        var cost = b * ((Math.Pow(r, k) * (Math.Pow(r, n) - 1)) / (r-1)); 
+        var cost = b * ((Math.Pow(r, k) * (Math.Pow(r, n) - 1)) / (r - 1));
 
         _factoryValuesSO.UpgradeCostSO.Value = cost;
 
@@ -160,15 +160,19 @@ public class FactoryManager : MonoBehaviour
         var c = _playerCurrenyManagerSO.CurrencyTier1.Value;
 
         // this is a long equation so I broke it up into 2 parts to make it more readable
-        var step1 = (c * (r - 1) / (b * Math.Pow(r, k)))+1;
+        var step1 = (c * (r - 1) / (b * Math.Pow(r, k))) + 1;
         var n = Math.Floor(Math.Log(step1) / Math.Log(r)); // number of upgrades the player can afford
 
-        // Calculates the cost of N factories
-        var cost = b * ((Math.Pow(r, k) * (Math.Pow(r, n) - 1)) / (r-1));
+        double cost;
+
+        if (n == 0)
+            cost = b * Math.Pow(1.07, _factoryValuesSO.LevelSO.Value); // Calculates the cost of the next factory. The player can't afford any upgrades so we'll show them the cost of the next upgrade
+        else
+            cost = b * ((Math.Pow(r, k) * (Math.Pow(r, n) - 1)) / (r - 1));// Calculates the cost of N factories
 
         _factoryValuesSO.UpgradeCostSO.Value = cost;
 
-        return (int)n;
+        return _factoryValuesSO.LevelSO.Value + (int)n;
     }
 
     // Presumably the player has upgraded their factory and now we are calculating how much they get paid
@@ -183,10 +187,10 @@ public class FactoryManager : MonoBehaviour
     {
         int amountOfLevels = CalculateUpgradeCostForMultiplier(_purchaseMultiplierSO.Value);
 
-        if(amountOfLevels == 0)
+        if (amountOfLevels == 0)
         {
             CheckIfUpgradeIsAffordable(); // we just re-calculated the upgrade cost so we should check if the upgrade is affordable to make sure the UI is displaying the correct information
-            return; 
+            return;
         }
 
         // attempt to purchase the upgrade
