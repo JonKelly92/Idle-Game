@@ -124,26 +124,30 @@ public class FactoryManager : MonoBehaviour
     }
 
     // Calulates the new Upgrade Cost value and updates it
-    // it will then return the amount of levels the player can afford, either the amount of the muliplier or 0
+    // it will then return the amount of levels the player would have if they purchased the upgrades (i.e. selected x100 then returns 100 + current level)
     private int CalculateUpgradeCostForLevel(PurchaseMultiplierEnum multiplier)
     {
-        int amountOfLevels = 0;
+        int n = 0;
 
         string multiplierAsString = multiplier.ToString();
         multiplierAsString = multiplierAsString.Remove(0, 1);
-        if (!int.TryParse(multiplierAsString, out amountOfLevels))
+        if (!int.TryParse(multiplierAsString, out n))
         {
             Debug.LogError("Failed to parse the multiplier enum into an integer");
             return 0;
         }
 
-        int levels = _factoryValuesSO.LevelSO.Value + amountOfLevels;
+        var b = _factoryValuesSO.BaseUpgradeCost;
+        var r = _factoryValuesSO.BaseUpgradeMultiplier;
+        var k = _factoryValuesSO.LevelSO.Value;
+        var c = _playerCurrenyManagerSO.CurrencyTier1.Value;
 
-        double costForUpgrade = _factoryValuesSO.BaseUpgradeCost * Math.Pow(_factoryValuesSO.BaseUpgradeMultiplier, levels);
+        // Calculates the cost of N factories
+        var cost = b * ((Math.Pow(r, k) * (Math.Pow(r, n) - 1)) / (r-1)); 
 
-        _factoryValuesSO.UpgradeCostSO.Value = costForUpgrade;
+        _factoryValuesSO.UpgradeCostSO.Value = cost;
 
-        return levels;
+        return _factoryValuesSO.LevelSO.Value + n;
     }
 
     // Calculates how many level upgrades the player can afford and the cost of the those upgrades
@@ -181,7 +185,7 @@ public class FactoryManager : MonoBehaviour
 
         if(amountOfLevels == 0)
         {
-            CheckIfUpgradeIsAffordable(); // we just re-calculated the upgrade cost so we should check if it's affordable to make sure the UI is displaying the correct information
+            CheckIfUpgradeIsAffordable(); // we just re-calculated the upgrade cost so we should check if the upgrade is affordable to make sure the UI is displaying the correct information
             return; 
         }
 
