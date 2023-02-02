@@ -146,39 +146,25 @@ public class FactoryManager : MonoBehaviour
         return levels;
     }
 
-    // Calulates the new Upgrade Cost value for the highest level the player can afford then it automatically updates it
-    // if the player can't to upgrade at all then the Upgrade Cost value will still show the cost for x1 levels 
-    // it will then return the amount of levels the player can afford 
+    // Calculates how many level upgrades the player can afford and the cost of the those upgrades
+    // Returns the amount of level upgrades the player can afford and updates _factoryValuesSO.UpgradeCostSO.Value
     private int CalculateUpgradeCostForMaxLevels()
     {
-        // TODO : 
-        /*
-            This function needs to do 2 things:
-                - calculate how many factories the player can afford and return that value
-                - calculate the cost of the factories and update _factoryValuesSO.UpgradeCostSO.Value
-        */
-    
-        var amountOfLevels = 0;
-
-        var n = 10; // number of factories to buy
         var b = _factoryValuesSO.BaseUpgradeCost;
         var r = _factoryValuesSO.BaseUpgradeMultiplier;
         var k = _factoryValuesSO.LevelSO.Value;
         var c = _playerCurrenyManagerSO.CurrencyTier1.Value;
 
-        // The folowing 3 steps calculates the cost of N factories
-        var step1 = Math.Pow(r, k) * (Math.Pow(r, n) - 1);
-        var step2 = step1 / (r-1);
-        var step3 = b * step2;
+        // this is a long equation so I broke it up into 2 parts to make it more readable
+        var step1 = (c * (r - 1) / (b * Math.Pow(r, k)))+1;
+        var n = Math.Floor(Math.Log(step1) / Math.Log(r)); // number of upgrades the player can afford
 
-        // step 3 and test should give the same results
+        // Calculates the cost of N factories
+        var cost = b * ((Math.Pow(r, k) * (Math.Pow(r, n) - 1)) / (r-1));
 
-        var test = b * ((Math.Pow(r, k) * (Math.Pow(r, n) - 1)) / (r-1));
+        _factoryValuesSO.UpgradeCostSO.Value = cost;
 
-
-        //_factoryValuesSO.UpgradeCostSO.Value = upgradeCost;
-
-        return (int)amountOfLevels;
+        return (int)n;
     }
 
     // Presumably the player has upgraded their factory and now we are calculating how much they get paid
