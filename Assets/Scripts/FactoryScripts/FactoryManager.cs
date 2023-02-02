@@ -30,6 +30,7 @@ public class FactoryManager : MonoBehaviour
         // This makes sure the UI is displaying the correct values
         CurrencyTier1Changed(_playerCurrenyManagerSO.CurrencyTier1.Value);
         CalculateUpgradeCostForMultiplier(_purchaseMultiplierSO.Value);
+        CheckIfUpgradeIsAffordable();
     }
 
     private void OnDestroy()
@@ -52,6 +53,7 @@ public class FactoryManager : MonoBehaviour
     private void PurchaseMultiplierChanged(PurchaseMultiplierEnum multiplier)
     {
         CalculateUpgradeCostForMultiplier(multiplier);
+        CheckIfUpgradeIsAffordable();
     }
 
     private void PurchaseUpgrade()
@@ -135,20 +137,13 @@ public class FactoryManager : MonoBehaviour
             return 0;
         }
 
-        var levels = _factoryValuesSO.LevelSO.Value + amountOfLevels;
-        var costForUpgrade = _factoryValuesSO.BaseUpgradeCost;
+        int levels = _factoryValuesSO.LevelSO.Value + amountOfLevels;
 
-        for (int i = 0; i < levels; i++)
-        {
-            costForUpgrade *= _factoryValuesSO.BaseUpgradeMultiplier;
-        }
+        double costForUpgrade = _factoryValuesSO.BaseUpgradeCost * Math.Pow(_factoryValuesSO.BaseUpgradeMultiplier, levels);
 
         _factoryValuesSO.UpgradeCostSO.Value = costForUpgrade;
 
-        if (CheckIfUpgradeIsAffordable())
-            return levels;
-        else
-            return 0;
+        return levels;
     }
 
     // Calulates the new Upgrade Cost value for the highest level the player can afford then it automatically updates it
@@ -156,38 +151,40 @@ public class FactoryManager : MonoBehaviour
     // it will then return the amount of levels the player can afford 
     private int CalculateUpgradeCostForMaxLevels()
     {
-        int amountOfLevels = 0;
-        double nextUpgrade = _factoryValuesSO.BaseUpgradeCost * _factoryValuesSO.BaseUpgradeMultiplier;
-        double upgradeCost = nextUpgrade;
+        // TODO : 
+        /*
+            This function needs to do 2 things:
+                - calculate how many factories the player can afford and return that value
+                - calculate the cost of the factories and update _factoryValuesSO.UpgradeCostSO.Value
+        */
+    
+        var amountOfLevels = 0;
 
-        while (true)
-        {
-            if (_playerCurrenyManagerSO.CurrencyTier1.Value >= nextUpgrade)
-            {
-                amountOfLevels++; 
-                upgradeCost = nextUpgrade;
-            }
-            else
-                break;
+        var n = 10; // number of factories to buy
+        var b = _factoryValuesSO.BaseUpgradeCost;
+        var r = _factoryValuesSO.BaseUpgradeMultiplier;
+        var k = _factoryValuesSO.LevelSO.Value;
+        var c = _playerCurrenyManagerSO.CurrencyTier1.Value;
 
-            nextUpgrade = nextUpgrade * _factoryValuesSO.BaseUpgradeMultiplier;
-        }
+        // The folowing 3 steps calculates the cost of N factories
+        var step1 = Math.Pow(r, k) * (Math.Pow(r, n) - 1);
+        var step2 = step1 / (r-1);
+        var step3 = b * step2;
 
-        _factoryValuesSO.UpgradeCostSO.Value = upgradeCost;
+        // step 3 and test should give the same results
 
-        CheckIfUpgradeIsAffordable();
+        var test = b * ((Math.Pow(r, k) * (Math.Pow(r, n) - 1)) / (r-1));
 
-        return amountOfLevels;
+
+        //_factoryValuesSO.UpgradeCostSO.Value = upgradeCost;
+
+        return (int)amountOfLevels;
     }
 
     // Presumably the player has upgraded their factory and now we are calculating how much they get paid
     private void CalculateNewPayoutAmount()
     {
-        var payoutAmount = _factoryValuesSO.PayoutAmountSO.Value;
-        for (int i = 0; i < _factoryValuesSO.LevelSO.Value; i++)
-        {
-            payoutAmount *= _factoryValuesSO.PayoutMultiplier;
-        }
+        var payoutAmount = (_factoryValuesSO.BasePayoutAmount * _factoryValuesSO.LevelSO.Value) * _factoryValuesSO.PayoutMultiplier;
 
         _factoryValuesSO.PayoutAmountSO.Value = payoutAmount;
     }
@@ -196,8 +193,11 @@ public class FactoryManager : MonoBehaviour
     {
         int amountOfLevels = CalculateUpgradeCostForMultiplier(_purchaseMultiplierSO.Value);
 
-        if (amountOfLevels == 0)
-            return;
+        if(amountOfLevels == 0)
+        {
+            CheckIfUpgradeIsAffordable(); // we just re-calculated the upgrade cost so we should check if it's affordable to make sure the UI is displaying the correct information
+            return; 
+        }
 
         // attempt to purchase the upgrade
         if (!_playerCurrenyManagerSO.SpendTier1Currency(_factoryValuesSO.UpgradeCostSO.Value))
