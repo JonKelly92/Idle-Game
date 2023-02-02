@@ -80,12 +80,12 @@ public class UIManager_Factory : MonoBehaviour
 
     private void PayoutAmountChanged(double payoutAmount)
     {
-        _payoutAmount.SetText(payoutAmount.ToString());
+        _payoutAmount.SetText("$" + payoutAmount.ToCurrency());
     }
 
     private void UpgradeCostChanged(double upgradeCost)
     {
-        _upgradeCost.SetText(upgradeCost.ToString());
+        _upgradeCost.SetText("$" + upgradeCost.ToCurrency());
     }
 
     private void IsUpgradeAffordable(bool isItAffordable)
