@@ -15,10 +15,10 @@ MonoBehaviour:
   description: This contains all the values for the first factory the player has
     access to. It should be the cheapest factory to upgrade.
   <FactoryName>k__BackingField: Factory One
-  <TimeBetweenPayouts>k__BackingField: 1500
-  <BasePayoutAmount>k__BackingField: 10
+  <TimeBetweenPayouts>k__BackingField: 600
+  <BasePayoutAmount>k__BackingField: 1
   <PayoutMultiplier>k__BackingField: 1.07
-  <BaseUpgradeCost>k__BackingField: 100
+  <BaseUpgradeCost>k__BackingField: 3.738
   <BaseUpgradeMultiplier>k__BackingField: 1.07
   <LevelSO>k__BackingField: {fileID: 11400000, guid: 781194883232a7249962c04a9e02a4c5, type: 2}
   <PayoutAmountSO>k__BackingField: {fileID: 11400000, guid: fac4358b528f70e4b852670f64a7a4cd, type: 2}

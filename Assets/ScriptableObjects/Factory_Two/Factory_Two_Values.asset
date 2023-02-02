@@ -15,10 +15,10 @@ MonoBehaviour:
   description: This contains all the values for the second factory
   <FactoryName>k__BackingField: Factory Two
   <TimeBetweenPayouts>k__BackingField: 3000
-  <BasePayoutAmount>k__BackingField: 100
-  <PayoutMultiplier>k__BackingField: 1.07
-  <BaseUpgradeCost>k__BackingField: 500
-  <BaseUpgradeMultiplier>k__BackingField: 1.07
+  <BasePayoutAmount>k__BackingField: 60
+  <PayoutMultiplier>k__BackingField: 1.15
+  <BaseUpgradeCost>k__BackingField: 60
+  <BaseUpgradeMultiplier>k__BackingField: 1.15
   <LevelSO>k__BackingField: {fileID: 11400000, guid: 588fdd02226659544a72ec37aa94e125, type: 2}
   <PayoutAmountSO>k__BackingField: {fileID: 11400000, guid: 4fe3994dcbf099e4ba02a03cf7291ccb, type: 2}
   <UpgradeCostSO>k__BackingField: {fileID: 11400000, guid: 0b2f37026804d3345a8bc04625c6dcab, type: 2}

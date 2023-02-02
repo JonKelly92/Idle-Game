@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: This contains all the values for the fifth factory
   <FactoryName>k__BackingField: Factory Five
-  <TimeBetweenPayouts>k__BackingField: 3000
-  <BasePayoutAmount>k__BackingField: 100
-  <PayoutMultiplier>k__BackingField: 1.07
-  <BaseUpgradeCost>k__BackingField: 500
-  <BaseUpgradeMultiplier>k__BackingField: 1.07
+  <TimeBetweenPayouts>k__BackingField: 24000
+  <BasePayoutAmount>k__BackingField: 51840
+  <PayoutMultiplier>k__BackingField: 1.12
+  <BaseUpgradeCost>k__BackingField: 103680
+  <BaseUpgradeMultiplier>k__BackingField: 1.12
   <LevelSO>k__BackingField: {fileID: 11400000, guid: bbc0a2bcfb0125e40bff98029825470f, type: 2}
   <PayoutAmountSO>k__BackingField: {fileID: 11400000, guid: bd49f02a9cd5e1a4b9dce3a959da6f1a, type: 2}
   <UpgradeCostSO>k__BackingField: {fileID: 11400000, guid: 465f3498ddb33d0419accf367a16c95c, type: 2}

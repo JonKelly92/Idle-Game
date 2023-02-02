@@ -1485,7 +1485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c45cf348733dc04d8d168941ea42604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultAmountOfCurrency_Tier1: 200
+  DefaultAmountOfCurrency_Tier1: 5
   PlayerCurrenyManagerSO: {fileID: 11400000, guid: 39b44479021fcdb4d8a3d5ad816ef365, type: 2}
   LastTimerUpdate: {fileID: 11400000, guid: c919c7f7677742c4da42d1d769bb5f0d, type: 2}
   Factories:
