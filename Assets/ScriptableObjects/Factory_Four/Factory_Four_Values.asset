@@ -24,3 +24,4 @@ MonoBehaviour:
   <UpgradeCostSO>k__BackingField: {fileID: 11400000, guid: 8b79cd40117ee1b4f8f3045e91c5e881, type: 2}
   <PayoutTimeRemainingSO>k__BackingField: {fileID: 11400000, guid: 9385bf27d6dddf149ba9c1146682d755, type: 2}
   <IsUpgradeAffordableSO>k__BackingField: {fileID: 11400000, guid: 3838588747be9e340b17cc184b02cd25, type: 2}
+  <Id>k__BackingField: factory_4

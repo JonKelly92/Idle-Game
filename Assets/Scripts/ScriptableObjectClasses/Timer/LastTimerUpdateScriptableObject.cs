@@ -6,6 +6,7 @@ public class LastTimerUpdateScriptableObject : DescriptionBaseSO
 {
     private long _ticks;
 
+    [field: SerializeField] public string Id { get; private set; }
     [SerializeField] private string DateAndTime; // for debugging
 
     public DateTime Value

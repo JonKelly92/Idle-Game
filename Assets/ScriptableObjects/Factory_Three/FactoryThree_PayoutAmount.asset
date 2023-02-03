@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: FactoryThree_PayoutAmount
   m_EditorClassIdentifier: 
   description: 
-  _value: 321
+  _value: 0

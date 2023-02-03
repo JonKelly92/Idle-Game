@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
+    
+
     [SerializeField] private float _timeBetweenTicks;
 
     [SerializeField] private TimerTickEvent _timerTickEvent;
