@@ -1,19 +1,19 @@
-using System;
-using UnityEditor;
-using UnityEngine;
+// using System;
+// using UnityEditor;
+// using UnityEngine;
 
-[CustomEditor(typeof(LastTimerUpdateScriptableObject))]
-public class LastTimerUpdateCustomInspector : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        DrawDefaultInspector();
+// [CustomEditor(typeof(LastTimerUpdateScriptableObject))]
+// public class LastTimerUpdateCustomInspector : Editor
+// {
+//     public override void OnInspectorGUI()
+//     {
+//         DrawDefaultInspector();
 
-        LastTimerUpdateScriptableObject lastUpdate = (LastTimerUpdateScriptableObject)target;
+//         LastTimerUpdateScriptableObject lastUpdate = (LastTimerUpdateScriptableObject)target;
 
-        if(GUILayout.Button("Set to DateTime.Now"))
-        {
-            lastUpdate.Value = DateTime.Now;
-        }
-    }
-}
+//         if(GUILayout.Button("Set to DateTime.Now"))
+//         {
+//             lastUpdate.Value = DateTime.Now;
+//         }
+//     }
+// }

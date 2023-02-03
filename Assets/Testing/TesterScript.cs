@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class TesterScript : MonoBehaviour
 {
-    public double DefaultAmountOfCurrency_Tier1;
-    public PlayerCurrencyManagerScriptableObject PlayerCurrenyManagerSO;
-    public LastTimerUpdateScriptableObject LastTimerUpdate;
-    public List<FactoryValuesScriptableObject> Factories = new List<FactoryValuesScriptableObject>();
+    [SerializeField] public double DefaultAmountOfCurrency_Tier1;
+    [SerializeField] public PlayerCurrencyManagerScriptableObject PlayerCurrenyManagerSO;
+    [SerializeField] public LastTimerUpdateScriptableObject LastTimerUpdate;
+    [SerializeField] public List<FactoryValuesScriptableObject> Factories = new List<FactoryValuesScriptableObject>();
 
     public void ResetFactoryValues()
     {
