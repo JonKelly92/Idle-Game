@@ -166,7 +166,7 @@ public class FactoryManager : MonoBehaviour
         double cost;
 
         if (n == 0)
-            cost = b * Math.Pow(1.07, _factoryValuesSO.LevelSO.Value); // Calculates the cost of the next factory. The player can't afford any upgrades so we'll show them the cost of the next upgrade
+            cost = b * Math.Pow(r, k); // Calculates the cost of the next factory. The player can't afford any upgrades so we'll show them the cost of the next upgrade
         else
             cost = b * ((Math.Pow(r, k) * (Math.Pow(r, n) - 1)) / (r - 1));// Calculates the cost of N factories
 
