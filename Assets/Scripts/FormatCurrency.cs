@@ -7,13 +7,13 @@ public static class FormatCurrency
     {
         int length = amount.ToString("N2").Length;
 
-        if (length > 15)
+        if (length > 18)
             return amount.ToString("0,,,,.##T");
-        else if (length > 12)
+        else if (length > 14)
             return amount.ToString("0,,,.##B");
-        else if (length > 9) 
+        else if (length > 10) 
             return amount.ToString("0,,.##M");
-        else if (length > 6)
+        else if (length > 7)
             return amount.ToString("0,.##K");
         else
             return amount.ToString("0.##");
