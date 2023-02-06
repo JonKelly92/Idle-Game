@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: This contains the date and time of the last timer update. When compared
     against DateTime.Now you can know how much time has passed.
-  <Id>k__BackingField: 
-  DateAndTime: 
+  DateAndTime: 2023-02-06 9:30:38 AM

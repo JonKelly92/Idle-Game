@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    
+
 
     [SerializeField] private float _timeBetweenTicks;
 
@@ -11,7 +11,7 @@ public class Timer : MonoBehaviour
     [SerializeField] private LastTimerUpdateScriptableObject _lastTimerUpdate;
 
     private TimeSpan _timeThatPassed;
- 
+
     private void Start()
     {
         InvokeRepeating("TimerTick", _timeBetweenTicks, _timeBetweenTicks);

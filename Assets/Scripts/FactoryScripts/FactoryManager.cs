@@ -20,13 +20,6 @@ public class FactoryManager : MonoBehaviour
 
     private void Start()
     {
-        // Initialize values in case they have never been used before
-        if (_factoryValuesSO.PayoutAmountSO.Value < _factoryValuesSO.BasePayoutAmount)
-            _factoryValuesSO.PayoutAmountSO.Value = _factoryValuesSO.BasePayoutAmount;
-
-        if (_factoryValuesSO.UpgradeCostSO.Value < _factoryValuesSO.BaseUpgradeCost)
-            _factoryValuesSO.UpgradeCostSO.Value = _factoryValuesSO.BaseUpgradeCost;
-
         // This makes sure the UI is displaying the correct values
         CurrencyTier1Changed(_playerCurrenyManagerSO.CurrencyTier1.Value);
         CalculateUpgradeCostForMultiplier(_purchaseMultiplierSO.Value);

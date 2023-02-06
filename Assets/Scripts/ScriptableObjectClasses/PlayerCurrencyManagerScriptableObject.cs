@@ -13,7 +13,6 @@ public class PlayerCurrencyManagerScriptableObject : ScriptableObject
         
      */
 
-    [field: SerializeField] public string Id { get; private set; }
     [field: SerializeField] public DoubleVariable CurrencyTier1 { get; private set; }
     [field: SerializeField] public DoubleVariable CurrencyTier2 { get; private set; }
 

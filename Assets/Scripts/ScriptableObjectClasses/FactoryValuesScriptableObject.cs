@@ -18,6 +18,4 @@ public class FactoryValuesScriptableObject : DescriptionBaseSO
     [field: SerializeField] public DoubleVariable PayoutTimeRemainingSO { get; private set; } // in milliseconds
     [field: SerializeField]  public BoolVariable IsUpgradeAffordableSO { get; private set; }
 
-    [field:SerializeField] public string Id { get; private set; }
-
 }

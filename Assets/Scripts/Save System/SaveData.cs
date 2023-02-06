@@ -6,7 +6,7 @@ using System;
 public class SaveData
 {
     public double CurrencyTier1;
-    public DateTime LastTimerTick;
+    public long LastTimerTick; // we store this in ticks because DateTime cannot be serialized
     public List<FactoryData> Factories;
 
     public SaveData()
