@@ -7,18 +7,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 564026294, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
+      propertyPath: m_fontSize
+      value: 47.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 621452000, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
+      propertyPath: m_fontSize
+      value: 48
+      objectReference: {fileID: 0}
     - target: {fileID: 1647842639, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.9660034
       objectReference: {fileID: 0}
+    - target: {fileID: 1647842640, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
+      propertyPath: m_fontSize
+      value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144364334, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
+      propertyPath: m_fontSize
+      value: 50.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2087137425943476164, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
       propertyPath: _factoryValuesSO
       value: 
-      objectReference: {fileID: 11400000, guid: 455a75caded257844af6fd7fac842895, type: 2}
+      objectReference: {fileID: 11400000, guid: b0f973b5d95681c48876b298b1794504, type: 2}
     - target: {fileID: 2087137425943476164, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
       propertyPath: _purchaseUpgradeEvent
       value: 
-      objectReference: {fileID: 11400000, guid: a24a93d10d274f04d975b0827d8ce0e4, type: 2}
+      objectReference: {fileID: 11400000, guid: 8812d83237f37a1429607a7ffac2e54a, type: 2}
     - target: {fileID: 3395503616487393750, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1080
@@ -30,6 +46,10 @@ PrefabInstance:
     - target: {fileID: 3395503616487393750, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3395503616487393750, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -139
       objectReference: {fileID: 0}
     - target: {fileID: 3437042724621585277, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
       propertyPath: m_RootOrder
@@ -78,11 +98,11 @@ PrefabInstance:
     - target: {fileID: 8243695583215723463, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
       propertyPath: _factoryValuesSO
       value: 
-      objectReference: {fileID: 11400000, guid: 455a75caded257844af6fd7fac842895, type: 2}
+      objectReference: {fileID: 11400000, guid: b0f973b5d95681c48876b298b1794504, type: 2}
     - target: {fileID: 8243695583215723463, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
       propertyPath: _purchaseUpgradeEvent
       value: 
-      objectReference: {fileID: 11400000, guid: a24a93d10d274f04d975b0827d8ce0e4, type: 2}
+      objectReference: {fileID: 11400000, guid: 8812d83237f37a1429607a7ffac2e54a, type: 2}
     - target: {fileID: 8309688673880769729, guid: d19b0c062da60a74ca68a5dd86759db1, type: 3}
       propertyPath: m_Name
       value: Factory_One_Prefab

@@ -134,18 +134,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory_Two_Prefab
       objectReference: {fileID: 0}
-    - target: {fileID: 1223131318110419352, guid: 42c2eb774eab32045b5935bb241bb311, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1283494910634745502, guid: 42c2eb774eab32045b5935bb241bb311, type: 3}
-      propertyPath: _factoryValuesSO
-      value: 
-      objectReference: {fileID: 11400000, guid: e8bff3e3b7c108e4fa7e0bd22c7f840e, type: 2}
-    - target: {fileID: 1283494910634745502, guid: 42c2eb774eab32045b5935bb241bb311, type: 3}
-      propertyPath: _purchaseUpgradeEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: ee246dd2f85634641b2b3b05c3b9e1c3, type: 2}
     - target: {fileID: 5528131340113376399, guid: 42c2eb774eab32045b5935bb241bb311, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -230,50 +218,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7181164044323911398, guid: 42c2eb774eab32045b5935bb241bb311, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7181164045218424653, guid: 42c2eb774eab32045b5935bb241bb311, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7181164045719707890, guid: 42c2eb774eab32045b5935bb241bb311, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -1.7600098
-      objectReference: {fileID: 0}
-    - target: {fileID: 7181164045726672918, guid: 42c2eb774eab32045b5935bb241bb311, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.9659424
-      objectReference: {fileID: 0}
-    - target: {fileID: 7181164045868163158, guid: 42c2eb774eab32045b5935bb241bb311, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 503425397595e5c438617dcd8f0ac127, type: 3}
-    - target: {fileID: 7181164045868163159, guid: 42c2eb774eab32045b5935bb241bb311, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 3.31
-      objectReference: {fileID: 0}
-    - target: {fileID: 7181164045868163159, guid: 42c2eb774eab32045b5935bb241bb311, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 59.7993
-      objectReference: {fileID: 0}
-    - target: {fileID: 7181164045868163159, guid: 42c2eb774eab32045b5935bb241bb311, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -6.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7181164045868163159, guid: 42c2eb774eab32045b5935bb241bb311, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -6.1000004
-      objectReference: {fileID: 0}
-    - target: {fileID: 9178229151053171357, guid: 42c2eb774eab32045b5935bb241bb311, type: 3}
-      propertyPath: _factoryValuesSO
-      value: 
-      objectReference: {fileID: 11400000, guid: e8bff3e3b7c108e4fa7e0bd22c7f840e, type: 2}
-    - target: {fileID: 9178229151053171357, guid: 42c2eb774eab32045b5935bb241bb311, type: 3}
-      propertyPath: _purchaseUpgradeEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: ee246dd2f85634641b2b3b05c3b9e1c3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42c2eb774eab32045b5935bb241bb311, type: 3}
 --- !u!224 &76794030 stripped
@@ -788,7 +732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &522542100
 Transform:
   m_ObjectHideFlags: 0
@@ -820,11 +764,11 @@ MonoBehaviour:
   PlayerCurrenyManagerSO: {fileID: 11400000, guid: 39b44479021fcdb4d8a3d5ad816ef365, type: 2}
   LastTimerUpdate: {fileID: 11400000, guid: c919c7f7677742c4da42d1d769bb5f0d, type: 2}
   Factories:
-  - {fileID: 11400000, guid: 455a75caded257844af6fd7fac842895, type: 2}
-  - {fileID: 11400000, guid: e8bff3e3b7c108e4fa7e0bd22c7f840e, type: 2}
-  - {fileID: 11400000, guid: 5b4ab4224226a8948a350762aad80de1, type: 2}
-  - {fileID: 11400000, guid: d69e0568b82d8244ea07502c58fbfb18, type: 2}
-  - {fileID: 11400000, guid: a833ace21fc5f1b4eb904d1dd261e70d, type: 2}
+  - {fileID: 11400000, guid: b0f973b5d95681c48876b298b1794504, type: 2}
+  - {fileID: 11400000, guid: 2cf1ca4cc2f06784d80eaaea9fb06ebc, type: 2}
+  - {fileID: 11400000, guid: a2955af2877cbc346abbc5234bf33189, type: 2}
+  - {fileID: 11400000, guid: ff4c0f42acb545f429362bbb74828dfa, type: 2}
+  - {fileID: 11400000, guid: 2f3c064b709dbad498b908a0e890bae3, type: 2}
 --- !u!1 &556634826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,7 +1054,7 @@ GameObject:
   - component: {fileID: 828070148}
   - component: {fileID: 828070147}
   m_Layer: 5
-  m_Name: Scripts
+  m_Name: UI Scripts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1176,26 +1120,6 @@ PrefabInstance:
     - target: {fileID: 3185874461638201564, guid: a2d9ec5d7aa07be4db9334b445166d62, type: 3}
       propertyPath: m_Name
       value: Factory_One_Prefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 3185874461638201564, guid: a2d9ec5d7aa07be4db9334b445166d62, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6874619637430263714, guid: a2d9ec5d7aa07be4db9334b445166d62, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.50006104
-      objectReference: {fileID: 0}
-    - target: {fileID: 6874619638324547081, guid: a2d9ec5d7aa07be4db9334b445166d62, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6874619638850865590, guid: a2d9ec5d7aa07be4db9334b445166d62, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -1.7600098
-      objectReference: {fileID: 0}
-    - target: {fileID: 6874619639170937391, guid: a2d9ec5d7aa07be4db9334b445166d62, type: 3}
-      propertyPath: m_FillAmount
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8104454782856863179, guid: a2d9ec5d7aa07be4db9334b445166d62, type: 3}
       propertyPath: m_Pivot.x
@@ -1542,11 +1466,11 @@ MonoBehaviour:
   PlayerCurrenyManagerSO: {fileID: 11400000, guid: 39b44479021fcdb4d8a3d5ad816ef365, type: 2}
   LastTimerUpdate: {fileID: 11400000, guid: c919c7f7677742c4da42d1d769bb5f0d, type: 2}
   Factories:
-  - {fileID: 11400000, guid: a833ace21fc5f1b4eb904d1dd261e70d, type: 2}
-  - {fileID: 11400000, guid: d69e0568b82d8244ea07502c58fbfb18, type: 2}
-  - {fileID: 11400000, guid: 5b4ab4224226a8948a350762aad80de1, type: 2}
-  - {fileID: 11400000, guid: e8bff3e3b7c108e4fa7e0bd22c7f840e, type: 2}
-  - {fileID: 11400000, guid: 455a75caded257844af6fd7fac842895, type: 2}
+  - {fileID: 11400000, guid: b0f973b5d95681c48876b298b1794504, type: 2}
+  - {fileID: 11400000, guid: 2cf1ca4cc2f06784d80eaaea9fb06ebc, type: 2}
+  - {fileID: 11400000, guid: a2955af2877cbc346abbc5234bf33189, type: 2}
+  - {fileID: 11400000, guid: ff4c0f42acb545f429362bbb74828dfa, type: 2}
+  - {fileID: 11400000, guid: 2f3c064b709dbad498b908a0e890bae3, type: 2}
 --- !u!4 &1277423969
 Transform:
   m_ObjectHideFlags: 0
@@ -1887,7 +1811,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1343473188}
   m_Layer: 0
-  m_Name: Scripts
+  m_Name: Manager Scripts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2546,6 +2470,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Timer
       objectReference: {fileID: 0}
+    - target: {fileID: 1614573482466209505, guid: 5e0490c02705e8e48b497fa44f3b3048, type: 3}
+      propertyPath: _lastTimerUpdate
+      value: 
+      objectReference: {fileID: 11400000, guid: c919c7f7677742c4da42d1d769bb5f0d, type: 2}
     - target: {fileID: 1614573482466209505, guid: 5e0490c02705e8e48b497fa44f3b3048, type: 3}
       propertyPath: _timeBetweenTicks
       value: 0.2

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e794a5d3c8ade5743ac4600db01ee1d2, type: 3}
+  m_Name: _Factory_3_Values
+  m_EditorClassIdentifier: 
+  description: 
+  <FactoryName>k__BackingField: Factory 3
+  <TimeBetweenPayouts>k__BackingField: 6000
+  <BasePayoutAmount>k__BackingField: 540
+  <PayoutMultiplier>k__BackingField: 1.14
+  <BaseUpgradeCost>k__BackingField: 720
+  <BaseUpgradeMultiplier>k__BackingField: 1.14
+  <LevelSO>k__BackingField: {fileID: 11400000, guid: 04ea68184f833474d852a82a9a0afd5d, type: 2}
+  <PayoutAmountSO>k__BackingField: {fileID: 11400000, guid: 9a3453c71867a6f4eb6840c4d16b011b, type: 2}
+  <UpgradeCostSO>k__BackingField: {fileID: 11400000, guid: 01239d8d4b417de48b912b9d509a32ab, type: 2}
+  <PayoutTimeRemainingSO>k__BackingField: {fileID: 11400000, guid: 8029e431ac937ae4e87a6259961e4257, type: 2}
+  <IsUpgradeAffordableSO>k__BackingField: {fileID: 11400000, guid: 8fbe38f646a84954395a05fb62b7fa29, type: 2}
+  <Id>k__BackingField: 

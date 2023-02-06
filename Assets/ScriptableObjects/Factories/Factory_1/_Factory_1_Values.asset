@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e794a5d3c8ade5743ac4600db01ee1d2, type: 3}
+  m_Name: _Factory_1_Values
+  m_EditorClassIdentifier: 
+  description: This contains all the values for the first factory the player has
+    access to. It should be the cheapest factory to upgrade.
+  <FactoryName>k__BackingField: Factory 1
+  <TimeBetweenPayouts>k__BackingField: 600
+  <BasePayoutAmount>k__BackingField: 1
+  <PayoutMultiplier>k__BackingField: 1.07
+  <BaseUpgradeCost>k__BackingField: 3.738
+  <BaseUpgradeMultiplier>k__BackingField: 1.07
+  <LevelSO>k__BackingField: {fileID: 11400000, guid: 33a0d036b54abce42b5a9a1eb55f25f3, type: 2}
+  <PayoutAmountSO>k__BackingField: {fileID: 11400000, guid: 8bb121c6aa6875e4f83aae6cf224f7e8, type: 2}
+  <UpgradeCostSO>k__BackingField: {fileID: 11400000, guid: 786632b71c2497546870b69a5022f75f, type: 2}
+  <PayoutTimeRemainingSO>k__BackingField: {fileID: 11400000, guid: 150b64fd481737743818b3123c48f0b2, type: 2}
+  <IsUpgradeAffordableSO>k__BackingField: {fileID: 11400000, guid: 151c65dc97423bf47a7b73fe68c525dd, type: 2}
+  <Id>k__BackingField: 

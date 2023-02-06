@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b4542402eb53b545a81915c094585fc, type: 3}
-  m_Name: PurchaseMultiplier
+  m_Script: {fileID: 11500000, guid: 2999533b68f3f4a4597da64295fc3628, type: 3}
+  m_Name: Factory_2_PayoutTimeRemaining
   m_EditorClassIdentifier: 
-  description: 'Whenever the player chooses a new multiplier for purchasing factories
-    (i.e. x10, x100) then this SO will be updated and send out an event
-
-'
+  description: 
   _value: 0
