@@ -137,13 +137,8 @@ public class FactoryManager : MonoBehaviour
             return 0;
         }
 
-        var b = _factoryValuesSO.BaseUpgradeCost;
-        var r = _factoryValuesSO.BaseUpgradeMultiplier;
-        var k = _factoryValuesSO.LevelSO.Value;
-        var c = _playerCurrenyManagerSO.CurrencyTier1.Value;
-
         // Calculates the cost of N factories
-        var cost = b * ((Math.Pow(r, k) * (Math.Pow(r, n) - 1)) / (r - 1));
+        var cost = _factoryValuesSO.BaseUpgradeCost * ((Math.Pow(_factoryValuesSO.BaseUpgradeMultiplier, _factoryValuesSO.LevelSO.Value) * (Math.Pow(_factoryValuesSO.BaseUpgradeMultiplier, n) - 1)) / (_factoryValuesSO.BaseUpgradeMultiplier - 1));
 
         _factoryValuesSO.UpgradeCostSO.Value = cost;
 
@@ -154,21 +149,16 @@ public class FactoryManager : MonoBehaviour
     // Returns the amount of level upgrades the player can afford and updates _factoryValuesSO.UpgradeCostSO.Value
     private int CalculateUpgradeCostForMaxLevels()
     {
-        var b = _factoryValuesSO.BaseUpgradeCost;
-        var r = _factoryValuesSO.BaseUpgradeMultiplier;
-        var k = _factoryValuesSO.LevelSO.Value;
-        var c = _playerCurrenyManagerSO.CurrencyTier1.Value;
-
         // this is a long equation so I broke it up into 2 parts to make it more readable
-        var step1 = (c * (r - 1) / (b * Math.Pow(r, k))) + 1;
-        var n = Math.Floor(Math.Log(step1) / Math.Log(r)); // number of upgrades the player can afford
+        var step1 = (_playerCurrenyManagerSO.CurrencyTier1.Value * (_factoryValuesSO.BaseUpgradeMultiplier - 1) / (_factoryValuesSO.BaseUpgradeCost * Math.Pow(_factoryValuesSO.BaseUpgradeMultiplier, _factoryValuesSO.LevelSO.Value))) + 1;
+        var n = Math.Floor(Math.Log(step1) / Math.Log(_factoryValuesSO.BaseUpgradeMultiplier)); // number of upgrades the player can afford
 
         double cost;
 
         if (n == 0)
-            cost = b * Math.Pow(r, k); // Calculates the cost of the next factory. The player can't afford any upgrades so we'll show them the cost of the next upgrade
+            cost = _factoryValuesSO.BaseUpgradeCost * Math.Pow(_factoryValuesSO.BaseUpgradeMultiplier, _factoryValuesSO.LevelSO.Value); // Calculates the cost of the next factory. The player can't afford any upgrades so we'll show them the cost of the next upgrade
         else
-            cost = b * ((Math.Pow(r, k) * (Math.Pow(r, n) - 1)) / (r - 1));// Calculates the cost of N factories
+            cost = _factoryValuesSO.BaseUpgradeCost * ((Math.Pow(_factoryValuesSO.BaseUpgradeMultiplier, _factoryValuesSO.LevelSO.Value) * (Math.Pow(_factoryValuesSO.BaseUpgradeMultiplier, n) - 1)) / (_factoryValuesSO.BaseUpgradeMultiplier - 1));// Calculates the cost of N factories
 
         _factoryValuesSO.UpgradeCostSO.Value = cost;
 
