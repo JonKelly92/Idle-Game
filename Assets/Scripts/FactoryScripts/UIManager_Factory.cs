@@ -2,6 +2,7 @@ using System;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class UIManager_Factory : MonoBehaviour
 {
@@ -65,7 +66,7 @@ public class UIManager_Factory : MonoBehaviour
     {
         double percentageOfProgress = Math.Clamp((_factoryValuesSO.PayoutTimeRemainingSO.Value / _factoryValuesSO.TimeBetweenPayouts), 0, 1);
 
-        _progressBar.fillAmount = (float)percentageOfProgress;
+        _progressBar.DOFillAmount((float)percentageOfProgress, 0.19f);
     }
 
     private void LevelChanged(int level)
