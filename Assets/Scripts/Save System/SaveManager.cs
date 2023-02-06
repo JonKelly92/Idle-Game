@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
-    private const string SAVE_DATA_ID = "save_data_id";
-
     public float AutoSaveFrequncy;
     [SerializeField] public PlayerCurrencyManagerScriptableObject PlayerCurrenyManagerSO;
     [SerializeField] public LastTimerUpdateScriptableObject LastTimerUpdate;
@@ -15,13 +13,13 @@ public class SaveManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(" START ");
+        //Debug.Log(" START ");
 
         _saveData = new SaveData();
 
         UpdateSaveData();// we do this to set default values that are already in the scriptable objects
 
-        var data = SaveSystem.Load(_saveData, SAVE_DATA_ID);
+        var data = SaveSystem.Load(_saveData);
 
         ApplyLoadedData(data);
 
@@ -30,10 +28,10 @@ public class SaveManager : MonoBehaviour
 
     private void Save()
     {
-        Debug.Log(" SAVE ");
+        //Debug.Log(" SAVE ");
 
         UpdateSaveData();
-        SaveSystem.Save(_saveData, SAVE_DATA_ID);
+        SaveSystem.Save(_saveData);
     }
 
     private void UpdateSaveData()
