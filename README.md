@@ -13,3 +13,5 @@ Prefab Variants were used to create the factories. They all inherit from one par
 
 I used the SOLID principles as a guide while writing my code
 
+Itch.io link -> https://jonkelly.itch.io/idle-game-demo
+
